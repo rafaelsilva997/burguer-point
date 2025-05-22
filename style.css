@@ -1,0 +1,146 @@
+:root {
+    --vermelho: #d32f2f;
+    --destaque: #ffc107;
+    --fundo: #f9f9f9;
+    --cinza: #666;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--fundo);
+    color: #333;
+  }
+
+  header {
+    background-color: var(--vermelho);
+    color: white;
+    text-align: center;
+    padding: 30px 20px 20px;
+  }
+
+  header img {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .promocao {
+    background-color: var(--destaque);
+    color: #000;
+    padding: 15px;
+    font-weight: bold;
+    margin: 0 auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  nav.menu {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav.menu ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  nav.menu a {
+    color: var(--vermelho);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+  }
+
+  nav.menu a:hover {
+    color: var(--destaque);
+  }
+
+  main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  h2 {
+    border-left: 6px solid var(--vermelho);
+    padding-left: 10px;
+    margin-top: 40px;
+    font-size: 1.6em;
+  }
+
+  .item {
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .item:last-child {
+    border-bottom: none;
+  }
+
+  .item-name {
+    font-weight: 600;
+    font-size: 1.15em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .description {
+    margin-top: 5px;
+    color: var(--cinza);
+    font-size: 0.95em;
+  }
+
+  .price {
+    color: var(--vermelho);
+    font-weight: bold;
+    font-size: 1.05em;
+  }
+
+  footer {
+    background-color: #f1f1f1;
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 1em;
+    color: #333;
+    margin-top: 60px;
+  }
+
+  footer a {
+    color: var(--vermelho);
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .item-name {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    header img {
+      width: 160px;
+    }
+
+    nav.menu ul {
+      gap: 10px;
+    }
+  }

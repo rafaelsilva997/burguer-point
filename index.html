@@ -4,160 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cardápio - Burger Point</title>
-  <style>
-    :root {
-      --vermelho: #d32f2f;
-      --destaque: #ffc107;
-      --fundo: #f9f9f9;
-      --cinza: #666;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--fundo);
-      color: #333;
-    }
-
-    header {
-      background-color: var(--vermelho);
-      color: white;
-      text-align: center;
-      padding: 30px 20px 20px;
-    }
-
-    header img {
-      max-width: 200px;
-      height: auto;
-      margin-bottom: 15px;
-    }
-
-    .promocao {
-      background-color: var(--destaque);
-      color: #000;
-      padding: 15px;
-      font-weight: bold;
-      margin: 0 auto;
-      max-width: 800px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    nav.menu {
-      background-color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav.menu ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 10px 0;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    nav.menu a {
-      color: var(--vermelho);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.2s;
-    }
-
-    nav.menu a:hover {
-      color: var(--destaque);
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      border-left: 6px solid var(--vermelho);
-      padding-left: 10px;
-      margin-top: 40px;
-      font-size: 1.6em;
-    }
-
-    .item {
-      padding: 20px 0;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .item:last-child {
-      border-bottom: none;
-    }
-
-    .item-name {
-      font-weight: 600;
-      font-size: 1.15em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .description {
-      margin-top: 5px;
-      color: var(--cinza);
-      font-size: 0.95em;
-    }
-
-    .price {
-      color: var(--vermelho);
-      font-weight: bold;
-      font-size: 1.05em;
-    }
-
-    footer {
-      background-color: #f1f1f1;
-      padding: 40px 20px;
-      text-align: center;
-      font-size: 1em;
-      color: #333;
-      margin-top: 60px;
-    }
-
-    footer a {
-      color: var(--vermelho);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      .item-name {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-      }
-
-      header img {
-        width: 160px;
-      }
-
-      nav.menu ul {
-        gap: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
@@ -179,26 +26,36 @@
 
   <main>
     <h2 id="lanches">Lanches</h2>
-    <!-- Lanches -->
-    <div class="item"><div class="item-name"><span>1 - X-Burguer</span><span class="price">R$ 21,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal e queijo mussarela.</div></div>
-    <div class="item"><div class="item-name"><span>2 - X-Salada</span><span class="price">R$ 22,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, queijo mussarela, alface e tomate.</div></div>
-    <div class="item"><div class="item-name"><span>3 - X-Egg</span><span class="price">R$ 23,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, ovo e queijo mussarela.</div></div>
-    <div class="item"><div class="item-name"><span>4 - X-Egg Salada</span><span class="price">R$ 24,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, ovo, queijo mussarela, alface e tomate.</div></div>
-    <div class="item"><div class="item-name"><span>5 - X-Bacon</span><span class="price">R$ 25,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado e queijo mussarela.</div></div>
-    <div class="item"><div class="item-name"><span>6 - X-Bacon Salada</span><span class="price">R$ 26,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado, queijo mussarela, alface e tomate.</div></div>
-    <div class="item"><div class="item-name"><span>7 - X-Frango</span><span class="price">R$ 21,00</span></div><div class="description">Pão, maionese, frango fatiado e queijo mussarela.</div></div>
-    <div class="item"><div class="item-name"><span>8 - X-Frango Salada</span><span class="price">R$ 22,00</span></div><div class="description">Pão, maionese, frango fatiado, queijo mussarela, alface e tomate.</div></div>
-    <div class="item"><div class="item-name"><span>9 - X-Frango Bacon</span><span class="price">R$ 25,00</span></div><div class="description">Pão, maionese, frango fatiado, bacon e queijo mussarela.</div></div>
-    <div class="item"><div class="item-name"><span>10 - X-Frango Bacon Salada</span><span class="price">R$ 26,00</span></div><div class="description">Pão, maionese, frango fatiado, bacon, queijo mussarela, alface e tomate.</div></div>
-    <div class="item"><div class="item-name"><span>11 - X-Egg Bacon Salada</span><span class="price">R$ 29,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, ovo, bacon, queijo mussarela, alface e tomate.</div></div>
+
+    <div class="item"><div class="item-name"><span>1 - X-Burguer</span><span class="price">R$ 21,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g) e queijo mussarela derretido.</div></div>
+
+    <div class="item"><div class="item-name"><span>2 - X-Salada</span><span class="price">R$ 22,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), queijo mussarela, folhas frescas de alface e rodelas de tomate.</div></div>
+
+    <div class="item"><div class="item-name"><span>3 - X-Egg</span><span class="price">R$ 23,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), queijo mussarela e ovo frito.</div></div>
+
+    <div class="item"><div class="item-name"><span>4 - X-Egg Salada</span><span class="price">R$ 24,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), ovo frito, queijo mussarela, alface crocante e tomate fresco.</div></div>
+
+    <div class="item"><div class="item-name"><span>5 - X-Bacon</span><span class="price">R$ 25,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), tiras crocantes de bacon e queijo mussarela derretido.</div></div>
+
+    <div class="item"><div class="item-name"><span>6 - X-Bacon Salada</span><span class="price">R$ 26,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), bacon crocante, queijo mussarela, alface e tomate.</div></div>
+
+    <div class="item"><div class="item-name"><span>7 - X-Frango</span><span class="price">R$ 21,00</span></div><div class="description">Pão, maionese caseira, frango grelhado em tiras temperadas e queijo mussarela derretido.</div></div>
+
+    <div class="item"><div class="item-name"><span>8 - X-Frango Salada</span><span class="price">R$ 22,00</span></div><div class="description">Pão, maionese caseira, tiras de frango grelhado, queijo mussarela, alface crocante e tomate fresco.</div></div>
+
+    <div class="item"><div class="item-name"><span>9 - X-Frango Bacon</span><span class="price">R$ 25,00</span></div><div class="description">Pão, maionese caseira, frango grelhado em tiras, bacon crocante e queijo mussarela.</div></div>
+
+    <div class="item"><div class="item-name"><span>10 - X-Frango Bacon Salada</span><span class="price">R$ 26,00</span></div><div class="description">Pão, maionese caseira, frango grelhado, bacon crocante, queijo mussarela, alface e tomate.</div></div>
+
+    <div class="item"><div class="item-name"><span>11 - X-Egg Bacon Salada</span><span class="price">R$ 29,00</span></div><div class="description">Pão, maionese caseira, hambúrguer artesanal (150g), ovo frito, bacon crocante, queijo mussarela, alface e tomate.</div></div>
 
     <h2 id="porcoes">Porções</h2>
-    <div class="item"><div class="item-name"><span>12 - Batatas Fritas Pequena</span><span class="price">R$ 15,00</span></div></div>
-    <div class="item"><div class="item-name"><span>13 - Batatas Fritas Média</span><span class="price">R$ 17,00</span></div></div>
+    <div class="item"><div class="item-name"><span>12 - Batatas Fritas Pequena</span><span class="price">R$ 15,00</span></div><div class="description">Porção de batatas fritas crocantes, temperadas com sal e acompanhadas de maionese especial.</div></div>
+    <div class="item"><div class="item-name"><span>13 - Batatas Fritas Média</span><span class="price">R$ 17,00</span></div><div class="description">Porção média com de batatas fritas sequinhas, crocantes por fora e macias por dentro.</div></div>
 
     <h2 id="yakissoba">Yakissoba</h2>
-    <div class="item"><div class="item-name"><span>14 - Yakissoba Médio</span><span class="price">R$ 25,00</span></div><div class="description">Macarrão de yakissoba, legumes e frango ao molho oriental.</div></div>
-    <div class="item"><div class="item-name"><span>15 - Yakissoba Grande</span><span class="price">R$ 30,00</span></div><div class="description">Macarrão de yakissoba, legumes e frango ao molho oriental.</div></div>
+    <div class="item"><div class="item-name"><span>14 - Yakissoba Médio</span><span class="price">R$ 25,00</span></div><div class="description">Macarrão especial salteado com tiras de frango, cenoura, repolho, brócolis e molho oriental à base de shoyu.</div></div>
+    <div class="item"><div class="item-name"><span>15 - Yakissoba Grande</span><span class="price">R$ 30,00</span></div><div class="description">Porção generosa de yakissoba com frango e legumes no molho oriental encorpado e saboroso.</div></div>
 
     <h2 id="bebidas">Bebidas</h2>
     <div class="item"><div class="item-name"><span>16 - Coca-Cola Lata 350ml</span><span class="price">R$ 6,00</span></div></div>
