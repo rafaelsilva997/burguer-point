@@ -3,51 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cardápio da hamburgueria Burger Point: lanches artesanais, porções, yakissoba e bebidas com qualidade e sabor incomparáveis." />
   <title>Cardápio - Burger Point</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    /* Estilos para os botões de contato */
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fefefe;
+      color: #333;
+    }
+
+    header, nav, main, footer {
+      padding: 1rem;
+    }
+
+    header img {
+      max-width: 150px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .promocao {
+      text-align: center;
+      margin-top: 1rem;
+      background: #ffd700;
+      padding: 0.5rem;
+      font-weight: bold;
+      border-radius: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #d64933;
+      font-weight: bold;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      color: #d64933;
+      text-align: center;
+    }
+
+    .item {
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 90%;
+      background: #fffdf8;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .item-name {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .description {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      background: #f9f9f9;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+
     .links-contato {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1rem;
+      gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 1rem;
     }
 
     .links-contato a {
-      background-color: #d64933;
+      background: #d64933;
       color: white;
-      font-weight: 700;
-      padding: 0.7rem 1.5rem;
-      border-radius: 30px;
+      padding: 0.5rem 1rem;
       text-decoration: none;
-      box-shadow: 0 4px 8px rgba(214, 73, 51, 0.5);
-      transition: background-color 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
     }
 
-    .links-contato a:hover,
-    .links-contato a:focus-visible {
-      background-color: #bf3e2b;
-      outline: none;
-      box-shadow: 0 0 12px #f1c40f;
+    .links-contato a:hover {
+      background: #b53c28;
+    }
+
+    .links-contato i {
+      margin-right: 0.5rem;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="burgueria.png" alt="Logo da hamburgueria Burger Point com hambúrguer estilizado" title="Burger Point - Hamburgueria artesanal" />
-    <div class="promocao destaque" role="region" aria-label="Promoção especial">
-      🎉 Inauguração especial! Na compra de qualquer lanche, você ganha uma Coca-Cola ou Guaraná 200ml, uma porção de batata frita e um mousse de maracujá inteiramente <strong>GRÁTIS</strong>! 🍟🥤🍮
+    <img src="burgueria.png" alt="Logo Burger Point" />
+    <div class="promocao">
+      🎉 Promoção: Na compra de qualquer lanche, ganhe refri 200ml, batata e mousse! 🍟🥤🍮
     </div>
   </header>
 
-  <nav class="menu" role="navigation" aria-label="Menu principal">
+  <nav>
     <ul>
       <li><a href="#lanches">Lanches</a></li>
       <li><a href="#porcoes">Porções</a></li>
@@ -58,173 +131,67 @@
   </nav>
 
   <main>
-    <section id="lanches" aria-label="Lista de Lanches">
+    <section id="lanches">
       <h2>Lanches</h2>
-
-      <article class="item" tabindex="0" aria-labelledby="nome1" aria-describedby="desc1">
-        <div class="item-name">
-          <span id="nome1">1 - X-Burguer</span>
-          <span class="price" aria-label="Preço vinte e um reais">R$ 21,00</span>
-        </div>
-        <p id="desc1" class="description">Pão, maionese caseira, hambúrguer artesanal (150g) e queijo mussarela derretido.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome2" aria-describedby="desc2">
-        <div class="item-name">
-          <span id="nome2">2 - X-Salada</span>
-          <span class="price" aria-label="Preço vinte e dois reais">R$ 22,00</span>
-        </div>
-        <p id="desc2" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), queijo mussarela, folhas frescas de alface e rodelas de tomate.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome3" aria-describedby="desc3">
-        <div class="item-name">
-          <span id="nome3">3 - X-Egg</span>
-          <span class="price" aria-label="Preço vinte e três reais">R$ 23,00</span>
-        </div>
-        <p id="desc3" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), queijo mussarela e ovo frito.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome4" aria-describedby="desc4">
-        <div class="item-name">
-          <span id="nome4">4 - X-Egg Salada</span>
-          <span class="price" aria-label="Preço vinte e quatro reais">R$ 24,00</span>
-        </div>
-        <p id="desc4" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), ovo frito, queijo mussarela, alface crocante e tomate fresco.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome5" aria-describedby="desc5">
-        <div class="item-name">
-          <span id="nome5">5 - X-Bacon</span>
-          <span class="price" aria-label="Preço vinte e cinco reais">R$ 25,00</span>
-        </div>
-        <p id="desc5" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), tiras crocantes de bacon e queijo mussarela derretido.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome6" aria-describedby="desc6">
-        <div class="item-name">
-          <span id="nome6">6 - X-Bacon Salada</span>
-          <span class="price" aria-label="Preço vinte e seis reais">R$ 26,00</span>
-        </div>
-        <p id="desc6" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), bacon crocante, queijo mussarela, alface e tomate.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome7" aria-describedby="desc7">
-        <div class="item-name">
-          <span id="nome7">7 - X-Frango</span>
-          <span class="price" aria-label="Preço vinte e um reais">R$ 21,00</span>
-        </div>
-        <p id="desc7" class="description">Pão, maionese caseira, frango grelhado em tiras temperadas e queijo mussarela derretido.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome8" aria-describedby="desc8">
-        <div class="item-name">
-          <span id="nome8">8 - X-Frango Salada</span>
-          <span class="price" aria-label="Preço vinte e dois reais">R$ 22,00</span>
-        </div>
-        <p id="desc8" class="description">Pão, maionese caseira, tiras de frango grelhado, queijo mussarela, alface crocante e tomate fresco.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome9" aria-describedby="desc9">
-        <div class="item-name">
-          <span id="nome9">9 - X-Frango Bacon</span>
-          <span class="price" aria-label="Preço vinte e cinco reais">R$ 25,00</span>
-        </div>
-        <p id="desc9" class="description">Pão, maionese caseira, frango grelhado em tiras, bacon crocante e queijo mussarela.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome10" aria-describedby="desc10">
-        <div class="item-name">
-          <span id="nome10">10 - X-Frango Bacon Salada</span>
-          <span class="price" aria-label="Preço vinte e seis reais">R$ 26,00</span>
-        </div>
-        <p id="desc10" class="description">Pão, maionese caseira, frango grelhado, bacon crocante, queijo mussarela, alface e tomate.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome11" aria-describedby="desc11">
-        <div class="item-name">
-          <span id="nome11">11 - X-Egg Bacon Salada</span>
-          <span class="price" aria-label="Preço vinte e nove reais">R$ 29,00</span>
-        </div>
-        <p id="desc11" class="description">Pão, maionese caseira, hambúrguer artesanal (150g), ovo frito, bacon crocante, queijo mussarela, alface e tomate.</p>
-      </article>
+      <div class="item">
+        <div class="item-name"><span>1 - X-Burguer</span><span>R$ 21</span></div>
+        <p class="description">Pão, maionese, hambúrguer artesanal (150g) e queijo.</p>
+      </div>
+      <div class="item">
+        <div class="item-name"><span>2 - X-Salada</span><span>R$ 22</span></div>
+        <p class="description">Pão, maionese, hambúrguer, queijo, alface e tomate.</p>
+      </div>
+      <div class="item">
+        <div class="item-name"><span>3 - X-Bacon</span><span>R$ 25</span></div>
+        <p class="description">Pão, maionese, hambúrguer, bacon crocante e queijo.</p>
+      </div>
     </section>
 
-    <section id="porcoes" aria-label="Lista de Porções">
+    <section id="porcoes">
       <h2>Porções</h2>
-
-      <article class="item" tabindex="0" aria-labelledby="nome12" aria-describedby="desc12">
-        <div class="item-name">
-          <span id="nome12">12 - Batatas Fritas Pequena</span>
-          <span class="price" aria-label="Preço quinze reais">R$ 15,00</span>
-        </div>
-        <p id="desc12" class="description">Porção de batatas fritas crocantes, temperadas com sal e acompanhadas de maionese especial.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome13" aria-describedby="desc13">
-        <div class="item-name">
-          <span id="nome13">13 - Batatas Fritas Média</span>
-          <span class="price" aria-label="Preço dezessete reais">R$ 17,00</span>
-        </div>
-        <p id="desc13" class="description">Porção média de batatas fritas sequinhas, crocantes por fora e macias por dentro.</p>
-      </article>
+      <div class="item">
+        <div class="item-name"><span>Batata Pequena</span><span>R$ 15</span></div>
+        <p class="description">Porção pequena de batatas fritas com maionese.</p>
+      </div>
+      <div class="item">
+        <div class="item-name"><span>Batata Média</span><span>R$ 17</span></div>
+        <p class="description">Porção média de batatas crocantes e sequinhas.</p>
+      </div>
     </section>
 
-    <section id="yakissoba" aria-label="Lista de Yakissobas">
+    <section id="yakissoba">
       <h2>Yakissoba</h2>
-
-      <article class="item" tabindex="0" aria-labelledby="nome14" aria-describedby="desc14">
-        <div class="item-name">
-          <span id="nome14">14 - Yakissoba Médio</span>
-          <span class="price" aria-label="Preço vinte e cinco reais">R$ 25,00</span>
-        </div>
-        <p id="desc14" class="description">Porção média de yakissoba com legumes frescos e frango desfiado, temperado com molho especial.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome15" aria-describedby="desc15">
-        <div class="item-name">
-          <span id="nome15">15 - Yakissoba Grande</span>
-          <span class="price" aria-label="Preço trinta reais">R$ 30,00</span>
-        </div>
-        <p id="desc15" class="description">Porção grande de yakissoba com legumes frescos e frango desfiado, temperado com molho especial.</p>
-      </article>
+      <div class="item">
+        <div class="item-name"><span>Yakissoba Médio</span><span>R$ 25</span></div>
+        <p class="description">Legumes frescos e frango desfiado no molho especial.</p>
+      </div>
+      <div class="item">
+        <div class="item-name"><span>Yakissoba Grande</span><span>R$ 30</span></div>
+        <p class="description">Versão maior com mais recheio e sabor.</p>
+      </div>
     </section>
 
-    <section id="bebidas" aria-label="Lista de Bebidas">
+    <section id="bebidas">
       <h2>Bebidas</h2>
-
-      <article class="item" tabindex="0" aria-labelledby="nome18" aria-describedby="desc18">
-        <div class="item-name">
-          <span id="nome18">18 - Coca-Cola Lata 350ml</span>
-          <span class="price" aria-label="Preço seis reais">R$ 6,00</span>
-        </div>
-        <p id="desc18" class="description">Refrigerante Coca-Cola gelado em lata de 350ml.</p>
-      </article>
-
-      <article class="item" tabindex="0" aria-labelledby="nome19" aria-describedby="desc19">
-        <div class="item-name">
-          <span id="nome19">19 - Coca-Cola 2L</span>
-          <span class="price" aria-label="Preço quinze reais">R$ 15,00</span>
-        </div>
-        <p id="desc19" class="description">Refrigerante Coca-Cola em garrafa PET de 2 litros.</p>
-      </article>
+      <div class="item">
+        <div class="item-name"><span>Coca-Cola Lata</span><span>R$ 6</span></div>
+        <p class="description">Refrigerante gelado 350ml.</p>
+      </div>
+      <div class="item">
+        <div class="item-name"><span>Coca-Cola 2L</span><span>R$ 15</span></div>
+        <p class="description">Garrafa de 2 litros.</p>
+      </div>
     </section>
   </main>
 
-  <footer id="contato" role="contentinfo">
-    <p>Contato: (11) 97768-9354 | Endereço: Rua Carlos de laet, 166b - Mogi das Cruzes - São Paulo</p>
+  <footer id="contato">
+    <p>Contato: (11) 97768-9354<br>Rua Carlos de Laet, 166B - Mogi das Cruzes - SP</p>
     <div class="links-contato">
-      <a href="https://wa.me/5511977689354" target="_blank" rel="noopener noreferrer" aria-label="Contato pelo WhatsApp">
-        📱 WhatsApp
-      </a>
-      <a href="https://www.instagram.com/burguerpoint25/" target="_blank" rel="noopener noreferrer" aria-label="Perfil do Instagram">
-        📸 Instagram
-      </a>
-      <a href="https://www.ifood.com.br/delivery/mogi-das-cruzes-sp/burguer-point-jardim-juliana/d170d96b-5660-438c-a936-b4d6add819b8" target="_blank" rel="noopener noreferrer" aria-label="Pedido pelo iFood">
-        🍔 Peça pelo iFood
-      </a>
+      <a href="https://wa.me/5511977689354"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+      <a href="https://www.instagram.com/burguerpoint25/"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.ifood.com.br/delivery/mogi-das-cruzes-sp/burguer-point-jardim-juliana/d170d96b-5660-438c-a936-b4d6add819b8"><i class="fas fa-utensils"></i>iFood</a>
     </div>
-    <p>&copy; 2025 Burger Point. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Burger Point</p>
   </footer>
 </body>
 </html>
