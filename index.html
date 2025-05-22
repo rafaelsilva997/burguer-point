@@ -16,6 +16,10 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -45,6 +49,35 @@
       max-width: 800px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    nav.menu {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav.menu ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      margin: 0;
+      padding: 10px 0;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav.menu a {
+      color: var(--vermelho);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    nav.menu a:hover {
+      color: var(--destaque);
     }
 
     main {
@@ -119,6 +152,10 @@
       header img {
         width: 160px;
       }
+
+      nav.menu ul {
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -130,9 +167,19 @@
     </div>
   </header>
 
-  <main>
-    <h2>Lanches</h2>
+  <nav class="menu">
+    <ul>
+      <li><a href="#lanches">Lanches</a></li>
+      <li><a href="#porcoes">Porções</a></li>
+      <li><a href="#yakissoba">Yakissoba</a></li>
+      <li><a href="#bebidas">Bebidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
 
+  <main>
+    <h2 id="lanches">Lanches</h2>
+    <!-- Lanches -->
     <div class="item"><div class="item-name"><span>1 - X-Burguer</span><span class="price">R$ 21,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal e queijo mussarela.</div></div>
     <div class="item"><div class="item-name"><span>2 - X-Salada</span><span class="price">R$ 22,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, queijo mussarela, alface e tomate.</div></div>
     <div class="item"><div class="item-name"><span>3 - X-Egg</span><span class="price">R$ 23,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, ovo e queijo mussarela.</div></div>
@@ -145,21 +192,21 @@
     <div class="item"><div class="item-name"><span>10 - X-Frango Bacon Salada</span><span class="price">R$ 26,00</span></div><div class="description">Pão, maionese, frango fatiado, bacon, queijo mussarela, alface e tomate.</div></div>
     <div class="item"><div class="item-name"><span>11 - X-Egg Bacon Salada</span><span class="price">R$ 29,00</span></div><div class="description">Pão, maionese, hambúrguer artesanal, ovo, bacon, queijo mussarela, alface e tomate.</div></div>
 
-    <h2>Porções</h2>
+    <h2 id="porcoes">Porções</h2>
     <div class="item"><div class="item-name"><span>12 - Batatas Fritas Pequena</span><span class="price">R$ 15,00</span></div></div>
     <div class="item"><div class="item-name"><span>13 - Batatas Fritas Média</span><span class="price">R$ 17,00</span></div></div>
 
-    <h2>Yakissoba</h2>
+    <h2 id="yakissoba">Yakissoba</h2>
     <div class="item"><div class="item-name"><span>14 - Yakissoba Médio</span><span class="price">R$ 25,00</span></div><div class="description">Macarrão de yakissoba, legumes e frango ao molho oriental.</div></div>
     <div class="item"><div class="item-name"><span>15 - Yakissoba Grande</span><span class="price">R$ 30,00</span></div><div class="description">Macarrão de yakissoba, legumes e frango ao molho oriental.</div></div>
 
-    <h2>Bebidas</h2>
+    <h2 id="bebidas">Bebidas</h2>
     <div class="item"><div class="item-name"><span>16 - Coca-Cola Lata 350ml</span><span class="price">R$ 6,00</span></div></div>
     <div class="item"><div class="item-name"><span>17 - Coca-Cola 2L</span><span class="price">R$ 15,00</span></div></div>
   </main>
 
   <footer>
-    <h2>Contato</h2>
+    <h2 id="contato">Contato</h2>
     <p>📞 WhatsApp: <a href="https://wa.me/5511977689354" target="_blank">11 97768-9354</a></p>
     <p>🍔 Peça pelo <strong>iFood</strong>: 
       <a href="https://www.ifood.com.br/delivery/mogi-das-cruzes-sp/burguer-point-jardim-juliana/d170d96b-5660-438c-a936-b4d6add819b8" target="_blank">Clique aqui</a>
