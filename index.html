@@ -7,584 +7,7 @@
   <title>Burguer Point | Cardápio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --vermelho: #b71c1c;
-      --amarelo: #ffcc00;
-      --verde: #25d366;
-      --fundo: #fffaf2;
-      --texto: #333;
-      --destaque: #ffe082;
-      --sombra: rgba(0,0,0,0.15);
-      --foco: #ffcc00;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--fundo);
-      color: var(--texto);
-      line-height: 1.6;
-      padding-bottom: 150px;
-      min-height: 100vh;
-      position: relative;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    header {
-      background-color: var(--vermelho);
-      color: white;
-      text-align: center;
-      padding: 20px 15px;
-    }
-
-    header img {
-      max-width: 140px;
-      margin-bottom: 10px;
-      user-select: none;
-    }
-
-    .promocao {
-      background-color: var(--destaque);
-      padding: 12px 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-      display: inline-block;
-      font-weight: 600;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      font-size: 1rem;
-      line-height: 1.4;
-      color: #4a4a00;
-    }
-
-    nav.menu {
-      background-color: var(--amarelo);
-      position: sticky;
-      top: 0;
-      z-index: 1001;
-      box-shadow: 0 2px 4px var(--sombra);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 15px;
-      user-select: none;
-    }
-
-    nav.menu ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-      list-style: none;
-      gap: 15px;
-      transition: max-height 0.3s ease;
-    }
-
-    nav.menu li {
-      margin: 0;
-    }
-
-    nav.menu a {
-      text-decoration: none;
-      font-weight: 700;
-      color: #000;
-      font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background-color 0.2s ease;
-    }
-
-    nav.menu a:hover,
-    nav.menu a:focus-visible {
-      background-color: var(--vermelho);
-      color: white;
-      outline-offset: 3px;
-      outline: 3px solid var(--amarelo);
-    }
-
-    #btn-menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #000;
-      margin-left: auto;
-      padding: 8px;
-      user-select: none;
-    }
-    #btn-menu-toggle:focus-visible {
-      outline: 2px solid var(--vermelho);
-      outline-offset: 2px;
-    }
-
-    main {
-      padding: 20px 15px;
-      max-width: 1000px;
-      margin: 0 auto;
-      display: flex;
-      gap: 20px;
-      min-height: 70vh;
-    }
-
-    .cardapio {
-      flex: 2;
-    }
-
-    section h2 {
-      margin-top: 40px;
-      border-bottom: 2px solid var(--vermelho);
-      padding-bottom: 8px;
-      font-size: 1.6rem;
-      letter-spacing: 0.02em;
-      color: var(--vermelho);
-    }
-
-    #filtros {
-      margin-bottom: 20px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    #filtros button {
-      background-color: var(--amarelo);
-      border: 2px solid var(--vermelho);
-      border-radius: 8px;
-      padding: 10px 18px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
-      font-size: 1rem;
-      user-select: none;
-    }
-
-    #filtros button.active,
-    #filtros button:hover,
-    #filtros button:focus-visible {
-      background-color: var(--vermelho);
-      color: white;
-      outline-offset: 3px;
-      outline: 3px solid var(--amarelo);
-    }
-
-    .item {
-      margin: 15px 0;
-      padding: 15px;
-      border-radius: 10px;
-      background-color: white;
-      box-shadow: 0 3px 7px var(--sombra);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      cursor: default;
-    }
-
-    .item:hover,
-    .item:focus-within {
-      transform: scale(1.03);
-      box-shadow: 0 8px 15px var(--sombra);
-      outline: none;
-    }
-
-    .item-info {
-      max-width: 75%;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .item-name {
-      font-weight: 700;
-      font-size: 1.15em;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-      color: var(--vermelho);
-    }
-
-    .price {
-      color: var(--vermelho);
-      min-width: 70px;
-      text-align: right;
-      font-weight: 700;
-      font-size: 1.15em;
-      user-select: text;
-    }
-
-    .description {
-      font-size: 1rem;
-      color: #555;
-      user-select: text;
-    }
-
-    .btn-adicionar {
-      padding: 10px 18px;
-      background-color: var(--verde);
-      color: white;
-      border: none;
-      border-radius: 7px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      min-width: 100px;
-      position: relative;
-      user-select: none;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.2);
-    }
-
-    .btn-adicionar:hover,
-    .btn-adicionar:focus-visible {
-      background-color: #1ebe5d;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      outline: none;
-    }
-
-    .badge-animada {
-      position: absolute;
-      top: -6px;
-      right: -8px;
-      background: var(--amarelo);
-      color: var(--vermelho);
-      border-radius: 50%;
-      padding: 3px 7px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      animation: pulse 0.4s ease forwards;
-      user-select: none;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(0.6); opacity: 0; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .item img {
-      width: 100px;
-      height: 75px;
-      border-radius: 10px;
-      object-fit: cover;
-      flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      user-select: none;
-      pointer-events: none;
-    }
-
-    aside#carrinho {
-      flex: 1;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px var(--sombra);
-      padding: 25px 20px;
-      height: fit-content;
-      position: sticky;
-      top: 90px;
-      max-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.3s ease;
-      z-index: 1100;
-      user-select: none;
-    }
-
-    aside#carrinho.oculto {
-      transform: translateX(110%);
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    aside#carrinho h2 {
-      border-bottom: 2px solid var(--vermelho);
-      padding-bottom: 6px;
-      margin-bottom: 12px;
-      font-size: 1.5em;
-      user-select: text;
-    }
-
-    .carrinho-itens {
-      flex-grow: 1;
-      overflow-y: auto;
-      margin-bottom: 15px;
-      user-select: text;
-      outline-offset: 4px;
-    }
-
-    .carrinho-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 8px;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .carrinho-item-info {
-      max-width: 70%;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .carrinho-item-nome {
-      font-weight: 600;
-      font-size: 1.05em;
-      color: var(--vermelho);
-      user-select: text;
-    }
-
-    .carrinho-item-qtd {
-      font-size: 0.9em;
-      color: #555;
-      user-select: text;
-    }
-
-    .carrinho-item-preco {
-      font-weight: 700;
-      color: var(--vermelho);
-      min-width: 55px;
-      text-align: right;
-      user-select: text;
-    }
-
-    .btn-remove {
-      background: none;
-      border: none;
-      color: var(--vermelho);
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1.2em;
-      margin-left: 10px;
-      transition: color 0.2s ease;
-      user-select: none;
-      line-height: 1;
-    }
-
-    .btn-remove:hover,
-    .btn-remove:focus-visible {
-      color: #7f0000;
-      outline-offset: 3px;
-      outline: 3px solid var(--amarelo);
-    }
-
-    .total {
-      font-weight: 700;
-      font-size: 1.4em;
-      text-align: right;
-      margin-bottom: 12px;
-      border-top: 2px solid var(--vermelho);
-      padding-top: 12px;
-      user-select: text;
-    }
-
-    .btn-finalizar {
-      background-color: var(--vermelho);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 14px;
-      font-weight: 700;
-      font-size: 1.2em;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      user-select: none;
-      box-shadow: 0 5px 10px rgba(183,28,28,0.7);
-    }
-
-    .btn-finalizar:hover,
-    .btn-finalizar:focus-visible {
-      background-color: #7f0000;
-      box-shadow: 0 8px 16px rgba(127,0,0,0.9);
-      outline: none;
-    }
-
-    #btn-carrinho-fixo {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      background-color: var(--verde);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      font-size: 30px;
-      cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1101;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-    #btn-carrinho-fixo:hover,
-    #btn-carrinho-fixo:focus-visible {
-      background-color: #1ebe5d;
-      outline-offset: 3px;
-      outline: 3px solid var(--amarelo);
-    }
-
-    #btn-fechar-carrinho {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      color: var(--vermelho);
-      font-weight: 700;
-      cursor: pointer;
-      position: absolute;
-      top: 14px;
-      right: 18px;
-      padding: 6px 10px;
-      user-select: none;
-    }
-    #btn-fechar-carrinho:focus-visible {
-      outline: 2px solid var(--vermelho);
-      outline-offset: 3px;
-    }
-
-    footer#contato {
-      background-color: #222;
-      color: white;
-      text-align: center;
-      padding: 35px 15px 110px 15px;
-      margin-top: 50px;
-      font-size: 1rem;
-      line-height: 1.5;
-      position: relative;
-      user-select: text;
-    }
-
-    footer#contato a {
-      color: var(--amarelo);
-      text-decoration: none;
-      font-weight: 700;
-      transition: color 0.3s ease;
-    }
-    footer#contato a:hover,
-    footer#contato a:focus-visible {
-      color: white;
-      outline-offset: 3px;
-      outline: 3px solid var(--vermelho);
-    }
-
-    .contato-info {
-      max-width: 600px;
-      margin: 0 auto 15px auto;
-    }
-    .redes-sociais {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-    }
-    .redes-sociais a {
-      color: var(--amarelo);
-      transition: color 0.3s ease;
-    }
-    .redes-sociais a:hover,
-    .redes-sociais a:focus-visible {
-      color: white;
-      outline-offset: 3px;
-      outline: 3px solid var(--vermelho);
-    }
-
-    @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
-
-    #voltar-topo {
-      position: fixed;
-      bottom: 160px;
-      right: 20px;
-      background-color: var(--vermelho);
-      color: white;
-      border: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 1em;
-      box-shadow: 0 2px 7px rgba(0,0,0,0.25);
-      display: none;
-      z-index: 1101;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    #voltar-topo.show {
-      display: block;
-    }
-
-    #voltar-topo:hover,
-    #voltar-topo:focus-visible {
-      background-color: #7f0000;
-      outline-offset: 3px;
-      outline: 3px solid var(--amarelo);
-    }
-
-    @media (max-width: 900px) {
-      main {
-        flex-direction: column;
-      }
-
-      nav.menu ul {
-        flex-direction: column;
-        max-height: 0;
-        overflow: hidden;
-        width: 100%;
-        background-color: var(--amarelo);
-      }
-      nav.menu ul.show {
-        max-height: 400px;
-        overflow-y: auto;
-      }
-
-      #btn-menu-toggle {
-        display: block;
-      }
-
-      aside#carrinho {
-        position: fixed;
-        top: 80px;
-        right: 0;
-        width: 320px;
-        max-height: 90vh;
-        transform: translateX(110%);
-        pointer-events: none;
-        opacity: 0;
-        z-index: 1200;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-
-      aside#carrinho.mostrar {
-        transform: translateX(0);
-        pointer-events: auto;
-        opacity: 1;
-      }
-
-      #btn-fechar-carrinho {
-        display: block;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header>
@@ -747,39 +170,129 @@
 
       <section id="combos" tabindex="0" aria-label="Combos">
         <h2>Combos</h2>
-        <article class="item combos" tabindex="0" aria-label="Combo X-Burguer com Batata e Mousse, R$ 27,00">
-          <img src="combo1.jpg" alt="Imagem do Combo X-Burguer com Batata e Mousse" />
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Burguer, R$ 21,00">
+          <img src="combo-xburguer.jpg" alt="Combo X-Burguer com Batata e Mousse" />
           <div class="item-info">
             <div class="item-name">
-              Combo X-Burguer com Batata e Mousse <span class="price">R$ 27,00</span>
+              Combo X-Burguer <span class="price">R$ 21,00</span>
             </div>
             <p class="description">X-Burguer, batata frita e mousse de maracujá.</p>
           </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Burguer com Batata e Mousse ao carrinho" type="button">Adicionar</button>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Burguer ao carrinho" type="button">Adicionar</button>
         </article>
-
-        <article class="item combos" tabindex="0" aria-label="Combo X-Salada com Batata e Mousse, R$ 28,00">
-          <img src="combo2.jpg" alt="Imagem do Combo X-Salada com Batata e Mousse" />
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Salada, R$ 22,00">
+          <img src="combo-xsalada.jpg" alt="Combo X-Salada com Batata e Mousse" />
           <div class="item-info">
             <div class="item-name">
-              Combo X-Salada com Batata e Mousse <span class="price">R$ 28,00</span>
+              Combo X-Salada <span class="price">R$ 22,00</span>
             </div>
             <p class="description">X-Salada, batata frita e mousse de maracujá.</p>
           </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Salada com Batata e Mousse ao carrinho" type="button">Adicionar</button>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Salada ao carrinho" type="button">Adicionar</button>
         </article>
-
-        <article class="item combos" tabindex="0" aria-label="Combo X-Egg com Batata e Mousse, R$ 29,00">
-          <img src="combo3.jpg" alt="Imagem do Combo X-Egg com Batata e Mousse" />
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Egg, R$ 23,00">
+          <img src="combo-xegg.jpg" alt="Combo X-Egg com Batata e Mousse" />
           <div class="item-info">
             <div class="item-name">
-              Combo X-Egg com Batata e Mousse <span class="price">R$ 29,00</span>
+              Combo X-Egg <span class="price">R$ 23,00</span>
             </div>
             <p class="description">X-Egg, batata frita e mousse de maracujá.</p>
           </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg com Batata e Mousse ao carrinho" type="button">Adicionar</button>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Egg Salada, R$ 24,00">
+          <img src="combo-xeggsalada.jpg" alt="Combo X-Egg Salada com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Egg Salada <span class="price">R$ 24,00</span>
+            </div>
+            <p class="description">X-Egg Salada, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg Salada ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon, R$ 25,00">
+          <img src="combo-xbacon.jpg" alt="Combo X-Bacon com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Bacon <span class="price">R$ 25,00</span>
+            </div>
+            <p class="description">X-Bacon, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon Salada, R$ 26,00">
+          <img src="combo-xbaconsalada.jpg" alt="Combo X-Bacon Salada com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Bacon Salada <span class="price">R$ 26,00</span>
+            </div>
+            <p class="description">X-Bacon Salada, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon Salada ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon Egg Salada, R$ 29,00">
+          <img src="combo-xbaconeggsalada.jpg" alt="Combo X-Bacon Egg Salada com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Bacon Egg Salada <span class="price">R$ 29,00</span>
+            </div>
+            <p class="description">X-Bacon Egg Salada, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon Egg Salada ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Frango, R$ 21,00">
+          <img src="combo-xfrango.jpg" alt="Combo X-Frango com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Frango <span class="price">R$ 21,00</span>
+            </div>
+            <p class="description">X-Frango, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Salada, R$ 22,00">
+          <img src="combo-xfrangosalada.jpg" alt="Combo X-Frango Salada com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Frango Salada <span class="price">R$ 22,00</span>
+            </div>
+            <p class="description">X-Frango Salada, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Salada ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Bacon, R$ 25,00">
+          <img src="combo-xfrangobacon.jpg" alt="Combo X-Frango Bacon com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Frango Bacon <span class="price">R$ 25,00</span>
+            </div>
+            <p class="description">X-Frango Bacon, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Bacon ao carrinho" type="button">Adicionar</button>
+        </article>
+      
+        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Bacon Salada, R$ 26,00">
+          <img src="combo-xfrangobaconsalada.jpg" alt="Combo X-Frango Bacon Salada com Batata e Mousse" />
+          <div class="item-info">
+            <div class="item-name">
+              Combo X-Frango Bacon Salada <span class="price">R$ 26,00</span>
+            </div>
+            <p class="description">X-Frango Bacon Salada, batata frita e mousse de maracujá.</p>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Bacon Salada ao carrinho" type="button">Adicionar</button>
         </article>
       </section>
+      
 
       <section id="porcoes" tabindex="0" aria-label="Porções">
         <h2>Porções</h2>
@@ -879,268 +392,6 @@
     </div>
     <p>© 2025 Burguer Point - Todos os direitos reservados.</p>
   </footer>
-
-  <script>
-    (() => {
-      const filtros = document.querySelectorAll('#filtros button');
-      const itens = document.querySelectorAll('.item');
-      const carrinho = document.getElementById('carrinho');
-      const btnCarrinhoFixo = document.getElementById('btn-carrinho-fixo');
-      const btnFecharCarrinho = document.getElementById('btn-fechar-carrinho');
-      const carrinhoItensContainer = carrinho.querySelector('.carrinho-itens');
-      const totalDisplay = carrinho.querySelector('.total');
-      const btnFinalizar = carrinho.querySelector('.btn-finalizar');
-      const btnMenuToggle = document.getElementById('btn-menu-toggle');
-      const menuList = document.getElementById('menu-list');
-      const voltarTopoBtn = document.getElementById('voltar-topo');
-
-      // Dados do carrinho (nome, preço, qtd)
-      let carrinhoDados = {};
-
-      // Função para formatar preço para moeda brasileira
-      function formatarPreco(valor) {
-        return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-      }
-
-      // Atualiza visual do carrinho
-      function atualizarCarrinho() {
-        carrinhoItensContainer.innerHTML = '';
-        let total = 0;
-        const keys = Object.keys(carrinhoDados);
-        if (keys.length === 0) {
-          carrinhoItensContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-          btnFinalizar.disabled = true;
-          totalDisplay.textContent = `Total: ${formatarPreco(0)}`;
-          return;
-        }
-
-        keys.forEach((key) => {
-          const item = carrinhoDados[key];
-          const itemTotal = item.preco * item.qtd;
-          total += itemTotal;
-
-          const div = document.createElement('div');
-          div.className = 'carrinho-item';
-
-          const info = document.createElement('div');
-          info.className = 'carrinho-item-info';
-
-          const nome = document.createElement('div');
-          nome.className = 'carrinho-item-nome';
-          nome.textContent = item.nome;
-
-          const qtd = document.createElement('div');
-          qtd.className = 'carrinho-item-qtd';
-          qtd.textContent = `Quantidade: ${item.qtd}`;
-
-          info.appendChild(nome);
-          info.appendChild(qtd);
-
-          const preco = document.createElement('div');
-          preco.className = 'carrinho-item-preco';
-          preco.textContent = formatarPreco(itemTotal);
-
-          const btnRemove = document.createElement('button');
-          btnRemove.className = 'btn-remove';
-          btnRemove.setAttribute('aria-label', `Remover um ${item.nome} do carrinho`);
-          btnRemove.innerHTML = '×';
-          btnRemove.addEventListener('click', () => {
-            removerItemDoCarrinho(key);
-          });
-
-          div.appendChild(info);
-          div.appendChild(preco);
-          div.appendChild(btnRemove);
-
-          carrinhoItensContainer.appendChild(div);
-        });
-
-        totalDisplay.textContent = `Total: ${formatarPreco(total)}`;
-        btnFinalizar.disabled = false;
-      }
-
-      // Adiciona item ao carrinho
-      function adicionarItemAoCarrinho(nome, preco) {
-        const key = nome.toLowerCase().replace(/\s+/g, '-');
-        if (carrinhoDados[key]) {
-          carrinhoDados[key].qtd++;
-        } else {
-          carrinhoDados[key] = { nome, preco, qtd: 1 };
-        }
-        atualizarCarrinho();
-        mostrarFeedbackBotao(nome);
-        mostrarCarrinho();
-      }
-
-      // Remove item do carrinho (decrementa quantidade)
-      function removerItemDoCarrinho(key) {
-        if (carrinhoDados[key]) {
-          carrinhoDados[key].qtd--;
-          if (carrinhoDados[key].qtd <= 0) {
-            delete carrinhoDados[key];
-          }
-          atualizarCarrinho();
-        }
-      }
-
-      // Feedback visual ao adicionar
-      function mostrarFeedbackBotao(nome) {
-        const btn = [...document.querySelectorAll('.btn-adicionar')].find(b => b.getAttribute('aria-label').toLowerCase().includes(nome.toLowerCase()));
-        if (!btn) return;
-
-        let badge = btn.querySelector('.badge-animada');
-        if (!badge) {
-          badge = document.createElement('span');
-          badge.className = 'badge-animada';
-          badge.textContent = '+1';
-          btn.appendChild(badge);
-          setTimeout(() => badge.remove(), 800);
-        }
-      }
-
-      // Filtrar itens do cardápio
-      filtros.forEach(botao => {
-        botao.addEventListener('click', () => {
-          filtros.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          });
-          botao.classList.add('active');
-          botao.setAttribute('aria-pressed', 'true');
-
-          const filtro = botao.getAttribute('data-filter');
-
-          itens.forEach(item => {
-            if (filtro === 'todos' || item.classList.contains(filtro)) {
-              item.style.display = '';
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        });
-      });
-
-      // Eventos dos botões adicionar
-      document.querySelectorAll('.btn-adicionar').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const item = e.target.closest('.item');
-          if (!item) return;
-          const nome = item.querySelector('.item-name').childNodes[0].textContent.trim();
-          const precoTexto = item.querySelector('.price').textContent.replace('R$', '').replace(',', '.').trim();
-          const preco = parseFloat(precoTexto);
-          adicionarItemAoCarrinho(nome, preco);
-        });
-      });
-
-      // Botão abrir carrinho (mobile)
-      btnCarrinhoFixo.addEventListener('click', () => {
-        mostrarCarrinho();
-      });
-
-      // Botão fechar carrinho (mobile)
-      btnFecharCarrinho.addEventListener('click', () => {
-        esconderCarrinho();
-        btnCarrinhoFixo.focus();
-      });
-
-      // Mostrar carrinho (mobile)
-      function mostrarCarrinho() {
-        if (window.innerWidth <= 900) {
-          carrinho.classList.add('mostrar');
-          carrinho.focus();
-          btnCarrinhoFixo.setAttribute('aria-expanded', 'true');
-        }
-      }
-      // Esconder carrinho (mobile)
-      function esconderCarrinho() {
-        if (window.innerWidth <= 900) {
-          carrinho.classList.remove('mostrar');
-          btnCarrinhoFixo.setAttribute('aria-expanded', 'false');
-        }
-      }
-
-      // Botão finalizar pedido (WhatsApp)
-      btnFinalizar.addEventListener('click', () => {
-        if (Object.keys(carrinhoDados).length === 0) return;
-
-        let mensagem = 'Olá, gostaria de fazer o seguinte pedido:%0A';
-        Object.values(carrinhoDados).forEach(item => {
-          mensagem += `- ${item.qtd}x ${item.nome}%0A`;
-        });
-        const total = Object.values(carrinhoDados).reduce((acc, i) => acc + i.preco * i.qtd, 0);
-        mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-
-        const numeroWhats = '5511977689354';
-        const url = `https://wa.me/${numeroWhats}?text=${mensagem}`;
-        window.open(url, '_blank');
-      });
-
-      // Toggle menu mobile
-      btnMenuToggle.addEventListener('click', () => {
-        const isExpanded = btnMenuToggle.getAttribute('aria-expanded') === 'true';
-        btnMenuToggle.setAttribute('aria-expanded', String(!isExpanded));
-        menuList.classList.toggle('show');
-
-        // Ajustar tab index nos links do menu
-        const links = menuList.querySelectorAll('a');
-        links.forEach(link => {
-          link.tabIndex = isExpanded ? -1 : 0;
-        });
-
-        if (!isExpanded) {
-          // Se abriu, foco no primeiro link
-          menuList.querySelector('a').focus();
-        } else {
-          btnMenuToggle.focus();
-        }
-      });
-
-      // Controle de foco do menu para acessibilidade
-      menuList.querySelectorAll('a').forEach(link => {
-        link.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape') {
-            btnMenuToggle.click();
-            btnMenuToggle.focus();
-          }
-        });
-      });
-
-      // Voltar ao topo
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-          voltarTopoBtn.classList.add('show');
-        } else {
-          voltarTopoBtn.classList.remove('show');
-        }
-      });
-
-      voltarTopoBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        btnMenuToggle.focus();
-      });
-
-      // Inicializar tabIndex do menu (desktop)
-      if (window.innerWidth > 900) {
-        menuList.querySelectorAll('a').forEach(link => (link.tabIndex = 0));
-      } else {
-        menuList.querySelectorAll('a').forEach(link => (link.tabIndex = -1));
-      }
-
-      // Fechar carrinho ao redimensionar para desktop
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 900) {
-          esconderCarrinho();
-          menuList.classList.remove('show');
-          btnMenuToggle.setAttribute('aria-expanded', 'false');
-          menuList.querySelectorAll('a').forEach(link => (link.tabIndex = 0));
-        } else {
-          menuList.querySelectorAll('a').forEach(link => (link.tabIndex = -1));
-        }
-      });
-
-      // Inicializa carrinho vazio
-      atualizarCarrinho();
-    })();
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
