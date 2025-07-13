@@ -3,18 +3,382 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cardápio - Burguer Point</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="description" content="Cardápio completo da Burguer Point. Hambúrgueres artesanais, combos com batata e mousse, porções, yakissoba e bebidas. Peça já!" />
+  <title>Burguer Point | Cardápio</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vermelho: #b71c1c;
+      --amarelo: #ffcc00;
+      --verde: #25d366;
+      --fundo: #fffaf2;
+      --texto: #333;
+      --destaque: #ffe082;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--fundo);
+      color: var(--texto);
+      line-height: 1.6;
+      padding-bottom: 150px;
+    }
+
+    header {
+      background-color: var(--vermelho);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header img {
+      max-width: 140px;
+      margin-bottom: 10px;
+    }
+
+    .promocao {
+      background-color: var(--destaque);
+      padding: 10px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    nav.menu {
+      background-color: var(--amarelo);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav.menu ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+      list-style: none;
+    }
+
+    nav.menu li {
+      margin: 0 10px;
+    }
+
+    nav.menu a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #000;
+    }
+
+    nav.menu a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Cardápio */
+    .cardapio {
+      flex: 2;
+    }
+
+    section h2 {
+      margin-top: 40px;
+      border-bottom: 2px solid var(--vermelho);
+      padding-bottom: 5px;
+    }
+
+    .item {
+      margin: 20px 0;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item:hover {
+      transform: scale(1.02);
+    }
+
+    .item-info {
+      max-width: 75%;
+    }
+
+    .item-name {
+      font-weight: bold;
+      font-size: 1.1em;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .price {
+      color: var(--vermelho);
+      min-width: 60px;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    .description {
+      margin-top: 5px;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .btn-adicionar {
+      padding: 8px 14px;
+      background-color: var(--verde);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-adicionar:hover {
+      background-color: #1ebe5d;
+    }
+
+    /* Carrinho */
+    aside#carrinho {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      padding: 20px;
+      height: fit-content;
+      position: sticky;
+      top: 80px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    aside#carrinho.oculto {
+      transform: translateX(110%);
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    aside#carrinho h2 {
+      border-bottom: 2px solid var(--vermelho);
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+      font-size: 1.3em;
+    }
+
+    .carrinho-itens {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
+
+    .carrinho-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 8px;
+    }
+
+    .carrinho-item-info {
+      max-width: 70%;
+    }
+
+    .carrinho-item-nome {
+      font-weight: 600;
+    }
+
+    .carrinho-item-qtd {
+      margin-top: 3px;
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .carrinho-item-preco {
+      font-weight: 700;
+      color: var(--vermelho);
+      min-width: 55px;
+      text-align: right;
+    }
+
+    .btn-remove {
+      background: none;
+      border: none;
+      color: #b71c1c;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-left: 10px;
+      transition: color 0.2s ease;
+    }
+
+    .btn-remove:hover {
+      color: #7f0000;
+    }
+
+    .total {
+      font-weight: bold;
+      font-size: 1.2em;
+      text-align: right;
+      margin-bottom: 10px;
+      border-top: 2px solid var(--vermelho);
+      padding-top: 10px;
+    }
+
+    .btn-finalizar {
+      background-color: var(--vermelho);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      font-weight: bold;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-finalizar:hover {
+      background-color: #7f0000;
+    }
+
+    /* Botão fixo carrinho */
+    #btn-carrinho-fixo {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background-color: var(--verde);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1100;
+      transition: background-color 0.3s ease;
+    }
+    #btn-carrinho-fixo:hover {
+      background-color: #1ebe5d;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 50px;
+    }
+
+    footer a {
+      color: var(--amarelo);
+      text-decoration: none;
+    }
+
+    .flutuante-whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--verde);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      z-index: 999;
+      text-decoration: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .flutuante-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+
+    #voltar-topo {
+      position: fixed;
+      bottom: 160px;
+      right: 20px;
+      background-color: var(--vermelho);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      display: none;
+      z-index: 998;
+    }
+
+    /* Mostrar botão voltar topo */
+    #voltar-topo.show {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        flex-direction: column;
+      }
+
+      aside#carrinho {
+        position: fixed;
+        top: 80px;
+        right: 0;
+        width: 320px;
+        max-height: 90vh;
+        transform: translateX(110%);
+        pointer-events: none;
+        opacity: 0;
+        z-index: 1050;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      aside#carrinho.mostrar {
+        transform: translateX(0);
+        pointer-events: auto;
+        opacity: 1;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <img src="burgueria.png" alt="Logo da Burguer Point" />
-    <div class="promocao" role="region" aria-label="Promoção especial">
-      <p>🍔 Seja muito bem-vindo ao Burguer Point! <br> Aqui você encontra os melhores hambúrgueres artesanais preparados com carinho e ingredientes fresquinhos. Aproveite nosso cardápio e tenha uma ótima experiência! 😄🍟</p>
-      <p>
-        todos os lanches dos <strong>combos</strong> vão com batatas e mousse !
-      </p>
+    <div class="promocao" role="region" aria-label="Mensagem de boas-vindas">
+      <p>🍔 Seja muito bem-vindo ao Burguer Point! <br /> Aqui você encontra os melhores hambúrgueres artesanais preparados com carinho e ingredientes fresquinhos. Aproveite nosso cardápio e tenha uma ótima experiência! 😄🍟</p>
+      <p>Todos os lanches dos <strong>combos</strong> vão com batatas e mousse!</p>
     </div>
   </header>
 
@@ -23,177 +387,412 @@
       <li><a href="#lanches">Lanches</a></li>
       <li><a href="#combos">Combos</a></li>
       <li><a href="#porcoes">Porções</a></li>
-      <li><a href="#yakissoba">Yakissoba</a></li>
       <li><a href="#bebidas">Bebidas</a></li>
       <li><a href="#contato">Contato</a></li>
     </ul>
   </nav>
 
   <main>
-    <section id="lanches" tabindex="-1">
-      <h2>Lanches</h2>
-      <div class="item">
-        <div class="item-name"><span>X-Burguer</span><span class="price">R$ 16,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal e queijo mussarela.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Salada</span><span class="price">R$ 17,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, queijo mussarela, alface e tomate.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg</span><span class="price">R$ 18,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo e queijo mussarela.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg Salada</span><span class="price">R$ 19,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo, queijo mussarela, alface e tomate.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Bacon</span><span class="price">R$ 20,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado e queijo mussarela.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Bacon Salada</span><span class="price">R$ 21,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado, queijo mussarela, alface e tomate.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango</span><span class="price">R$ 16,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado e queijo mussarela.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Salada</span><span class="price">R$ 17,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, queijo mussarela, alface e tomate.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Bacon</span><span class="price">R$ 20,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, bacon e queijo mussarela.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Bacon Salada</span><span class="price">R$ 21,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, bacon, queijo mussarela, alface e tomate.</div>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg Bacon Salada</span><span class="price">R$ 24,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo, bacon, queijo mussarela, alface e tomate.</div>
-      </div>
+    <section class="cardapio">
+      <!-- Lanches -->
+      <section id="lanches" tabindex="-1" aria-label="Lista de lanches">
+        <h2>Lanches</h2>
+
+        <article class="item" tabindex="0" data-name="X-Burguer" data-price="16.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Burguer</span>
+              <span class="price">R$ 16,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Burguer ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Salada" data-price="17.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Salada</span>
+              <span class="price">R$ 17,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, queijo mussarela, alface e tomate.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Egg" data-price="18.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Egg</span>
+              <span class="price">R$ 18,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, ovo e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Egg ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Egg Salada" data-price="19.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Egg Salada</span>
+              <span class="price">R$ 19,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, ovo, queijo mussarela, alface e tomate.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Egg Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Bacon" data-price="20.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Bacon</span>
+              <span class="price">R$ 20,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Bacon ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Bacon Salada" data-price="21.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Bacon Salada</span>
+              <span class="price">R$ 21,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado, queijo mussarela, alface e tomate.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Bacon Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Frango" data-price="16.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Frango</span>
+              <span class="price">R$ 16,00</span>
+            </div>
+            <div class="description">Pão, maionese, frango fatiado e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Frango ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Frango Salada" data-price="17.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Frango Salada</span>
+              <span class="price">R$ 17,00</span>
+            </div>
+            <div class="description">Pão, maionese, frango fatiado, queijo mussarela, alface e tomate.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Frango Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Frango Bacon" data-price="20.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Frango Bacon</span>
+              <span class="price">R$ 20,00</span>
+            </div>
+            <div class="description">Pão, maionese, frango fatiado, bacon e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Frango Bacon ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Frango Bacon Salada" data-price="21.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Frango Bacon Salada</span>
+              <span class="price">R$ 21,00</span>
+            </div>
+            <div class="description">Pão, maionese, frango fatiado, bacon, queijo mussarela, alface e tomate.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Frango Bacon Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="X-Egg Bacon" data-price="20.00" data-category="lanches">
+          <div class="item-info">
+            <div class="item-name">
+              <span>X-Egg Bacon</span>
+              <span class="price">R$ 20,00</span>
+            </div>
+            <div class="description">Pão, maionese, hambúrguer artesanal, ovo, bacon e queijo mussarela.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar X-Egg Bacon ao carrinho">Adicionar</button>
+        </article>
+      </section>
+
+      <!-- Combos -->
+      <section id="combos" tabindex="-1" aria-label="Lista de combos">
+        <h2>Combos (Lanche + Batata + Mousse)</h2>
+
+        <article class="item" tabindex="0" data-name="Combo X-Burguer" data-price="22.00" data-category="combos">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Combo X-Burguer</span>
+              <span class="price">R$ 22,00</span>
+            </div>
+            <div class="description">X-Burguer + batata frita + mousse de maracujá.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Burguer ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Combo X-Salada" data-price="23.00" data-category="combos">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Combo X-Salada</span>
+              <span class="price">R$ 23,00</span>
+            </div>
+            <div class="description">X-Salada + batata frita + mousse de maracujá.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Salada ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Combo X-Egg" data-price="24.00" data-category="combos">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Combo X-Egg</span>
+              <span class="price">R$ 24,00</span>
+            </div>
+            <div class="description">X-Egg + batata frita + mousse de maracujá.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Combo X-Bacon" data-price="26.00" data-category="combos">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Combo X-Bacon</span>
+              <span class="price">R$ 26,00</span>
+            </div>
+            <div class="description">X-Bacon + batata frita + mousse de maracujá.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon ao carrinho">Adicionar</button>
+        </article>
+      </section>
+
+      <!-- Porções -->
+      <section id="porcoes" tabindex="-1" aria-label="Lista de porções">
+        <h2>Porções</h2>
+
+        <article class="item" tabindex="0" data-name="Porção de Calabresa" data-price="28.00" data-category="porcoes">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Porção de Calabresa</span>
+              <span class="price">R$ 28,00</span>
+            </div>
+            <div class="description">Calabresa acebolada com batata frita e queijo cheddar.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Porção de Calabresa ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Porção de Batata Frita" data-price="20.00" data-category="porcoes">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Porção de Batata Frita</span>
+              <span class="price">R$ 20,00</span>
+            </div>
+            <div class="description">Batata frita crocante com queijo cheddar e bacon.</div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Porção de Batata Frita ao carrinho">Adicionar</button>
+        </article>
+      </section>
+
+      <!-- Bebidas -->
+      <section id="bebidas" tabindex="-1" aria-label="Lista de bebidas">
+        <h2>Bebidas</h2>
+
+        <article class="item" tabindex="0" data-name="Coca-Cola 350ml" data-price="7.00" data-category="bebidas">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Coca-Cola 350ml</span>
+              <span class="price">R$ 7,00</span>
+            </div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Coca-Cola 350ml ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Guaraná Antarctica 350ml" data-price="7.00" data-category="bebidas">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Guaraná Antarctica 350ml</span>
+              <span class="price">R$ 7,00</span>
+            </div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Guaraná Antarctica 350ml ao carrinho">Adicionar</button>
+        </article>
+
+        <article class="item" tabindex="0" data-name="Água Mineral 500ml" data-price="5.00" data-category="bebidas">
+          <div class="item-info">
+            <div class="item-name">
+              <span>Água Mineral 500ml</span>
+              <span class="price">R$ 5,00</span>
+            </div>
+          </div>
+          <button class="btn-adicionar" aria-label="Adicionar Água Mineral 500ml ao carrinho">Adicionar</button>
+        </article>
+      </section>
     </section>
 
-    <section id="combos" tabindex="-1">
-      <h2>Combos lanches com batata e sobremesa</h2>
-      <div class="item">
-        <div class="item-name"><span>X-Burguer combo</span><span class="price">R$ 21,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal e queijo mussarela.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Salada combo</span><span class="price">R$ 22,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg combo</span><span class="price">R$ 23,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo e queijo mussarela.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg Salada combo</span><span class="price">R$ 24,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Bacon combo</span><span class="price">R$ 25,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado e queijo mussarela.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Bacon Salada combo</span><span class="price">R$ 26,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, bacon fatiado, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango combo</span><span class="price">R$ 21,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado e queijo mussarela.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Salada combo</span><span class="price">R$ 22,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Bacon combo</span><span class="price">R$ 25,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, bacon e queijo mussarela.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Frango Bacon Salada combo</span><span class="price">R$ 26,00</span></div>
-        <div class="description">Pão, maionese, frango fatiado, bacon, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-      <div class="item">
-        <div class="item-name"><span>X-Egg Bacon Salada combo</span><span class="price">R$ 29,00</span></div>
-        <div class="description">Pão, maionese, hambúrguer artesanal, ovo, bacon, queijo mussarela, alface e tomate.</div>
-        <ul>
-          <li>batata</li>
-          <li>mousse</li>
-        </ul>
-      </div>
-
-      </div>
-    </section>
-
-    <section id="porcoes" tabindex="-1">
-      <h2>Porções</h2>
-      <div class="item"><div class="item-name"><span>Batatas Fritas Pequena</span><span class="price">R$ 15,00</span></div></div>
-      <div class="item"><div class="item-name"><span>Batatas Fritas Média</span><span class="price">R$ 17,00</span></div></div>
-      <div class="item"><div class="item-name"><span>Batatas Fritas Grande</span><span class="price">R$ 19,00</span></div></div>
-    </section>
-
-    <section id="bebidas" tabindex="-1">
-      <h2>Bebidas</h2>
-      <div class="item"><div class="item-name"><span>Coca-Cola 200ml</span><span class="price">R$ 3,50</span></div></div>
-      <div class="item"><div class="item-name"><span>Coca-Cola Lata 350ml</span><span class="price">R$ 6,00</span></div></div>
-      <div class="item"><div class="item-name"><span>Guaraná Antarctica Lata 350ml</span><span class="price">R$ 6,00</span></div></div>
-      <div class="item"><div class="item-name"><span>Coca-cola 600ml</span><span class="price">R$ 9,00</span></div></div>
-      <div class="item"><div class="item-name"><span>Coca-Cola 2L</span><span class="price">R$ 15,00</span></div></div>
-    </section>
+    <aside id="carrinho" class="oculto" aria-label="Resumo do carrinho">
+      <h2>Seu Pedido</h2>
+      <div class="carrinho-itens" role="list" aria-live="polite"></div>
+      <div class="total" aria-live="polite">Total: R$ 0,00</div>
+      <button class="btn-finalizar" aria-label="Finalizar pedido e enviar pelo WhatsApp">Finalizar Pedido</button>
+    </aside>
   </main>
 
-  <footer>
-    <h2 id="contato" tabindex="-1">Contato</h2>
-    <p>📞 WhatsApp: <a href="https://wa.me/5511977689354" target="_blank" rel="noopener noreferrer">11 97768-9354</a></p>
-    <p>🍔 Peça pelo <strong>iFood</strong>: <a href="https://www.ifood.com.br/delivery/mogi-das-cruzes-sp/burguer-point-jardim-juliana/d170d96b-5660-438c-a936-b4d6add819b8" target="_blank" rel="noopener noreferrer">Clique aqui</a></p>
-    <p class="copyright">&copy; 2025 Burguer Point. Todos os direitos reservados.</p>
+  <button id="btn-carrinho-fixo" aria-label="Abrir carrinho de compras" title="Carrinho">
+    🛒
+  </button>
+
+  <footer id="contato" tabindex="-1" aria-label="Informações de contato">
+    <p><strong>Burguer Point</strong> - Rua Carlos de Laet, 166 - Vila Suíssa - César de Souza - SP</p>
+    <p>WhatsApp: <a href="https://wa.me/5511977689354" target="_blank" rel="noopener noreferrer">+55 11 97768-9354</a> | Instagram: <a href="https://instagram.com/burguerpoint25" target="_blank" rel="noopener noreferrer">@burguerpoint25</a></p>
   </footer>
+
+  <script>
+    const btnAdicionar = document.querySelectorAll('.btn-adicionar');
+    const carrinho = document.querySelector('#carrinho');
+    const carrinhoItens = carrinho.querySelector('.carrinho-itens');
+    const totalDisplay = carrinho.querySelector('.total');
+    const btnFinalizar = carrinho.querySelector('.btn-finalizar');
+    const btnCarrinhoFixo = document.querySelector('#btn-carrinho-fixo');
+
+    let carrinhoDados = {};
+
+    // Função para formatar valores em Real
+    function formatarPreco(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // Atualiza o carrinho na tela
+    function atualizarCarrinho() {
+      carrinhoItens.innerHTML = '';
+
+      const itens = Object.values(carrinhoDados);
+      if(itens.length === 0) {
+        carrinhoItens.innerHTML = '<p>Seu carrinho está vazio.</p>';
+        totalDisplay.textContent = 'Total: R$ 0,00';
+        btnFinalizar.disabled = true;
+        return;
+      }
+
+      let total = 0;
+      itens.forEach(item => {
+        total += item.price * item.quantity;
+
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('carrinho-item');
+        itemDiv.setAttribute('role', 'listitem');
+
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('carrinho-item-info');
+
+        const nomeSpan = document.createElement('span');
+        nomeSpan.classList.add('carrinho-item-nome');
+        nomeSpan.textContent = item.name;
+
+        const qtdSpan = document.createElement('span');
+        qtdSpan.classList.add('carrinho-item-qtd');
+        qtdSpan.textContent = `Quantidade: ${item.quantity}`;
+
+        infoDiv.appendChild(nomeSpan);
+        infoDiv.appendChild(qtdSpan);
+
+        const precoSpan = document.createElement('span');
+        precoSpan.classList.add('carrinho-item-preco');
+        precoSpan.textContent = formatarPreco(item.price * item.quantity);
+
+        const btnRemove = document.createElement('button');
+        btnRemove.classList.add('btn-remove');
+        btnRemove.setAttribute('aria-label', `Remover um ${item.name} do carrinho`);
+        btnRemove.textContent = '✖';
+        btnRemove.addEventListener('click', () => {
+          removerItem(item.name);
+        });
+
+        itemDiv.appendChild(infoDiv);
+        itemDiv.appendChild(precoSpan);
+        itemDiv.appendChild(btnRemove);
+
+        carrinhoItens.appendChild(itemDiv);
+      });
+
+      totalDisplay.textContent = `Total: ${formatarPreco(total)}`;
+      btnFinalizar.disabled = false;
+    }
+
+    // Adiciona item no carrinho
+    function adicionarItem(nome, preco) {
+      if (carrinhoDados[nome]) {
+        carrinhoDados[nome].quantity++;
+      } else {
+        carrinhoDados[nome] = {
+          name: nome,
+          price: preco,
+          quantity: 1,
+        };
+      }
+      atualizarCarrinho();
+    }
+
+    // Remove um item do carrinho (uma unidade)
+    function removerItem(nome) {
+      if (carrinhoDados[nome]) {
+        carrinhoDados[nome].quantity--;
+        if (carrinhoDados[nome].quantity <= 0) {
+          delete carrinhoDados[nome];
+        }
+        atualizarCarrinho();
+      }
+    }
+
+    // Abre ou fecha o carrinho
+    btnCarrinhoFixo.addEventListener('click', () => {
+      if (carrinho.classList.contains('oculto')) {
+        carrinho.classList.remove('oculto');
+        if(window.innerWidth <= 900){
+          carrinho.classList.add('mostrar');
+        }
+      } else {
+        carrinho.classList.add('oculto');
+        if(window.innerWidth <= 900){
+          carrinho.classList.remove('mostrar');
+        }
+      }
+    });
+
+    // Adiciona evento nos botões "Adicionar"
+    btnAdicionar.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const itemElem = e.target.closest('.item');
+        const nome = itemElem.getAttribute('data-name');
+        const preco = parseFloat(itemElem.getAttribute('data-price'));
+        adicionarItem(nome, preco);
+      });
+    });
+
+    // Função para abrir WhatsApp com mensagem pronta
+    btnFinalizar.addEventListener('click', () => {
+      const itens = Object.values(carrinhoDados);
+      if(itens.length === 0) return;
+
+      let mensagem = `Olá, gostaria de fazer o pedido:\n\n`;
+      itens.forEach(item => {
+        mensagem += `- ${item.name} (x${item.quantity}): R$ ${(item.price * item.quantity).toFixed(2).replace('.',',')}\n`;
+      });
+
+      let total = itens.reduce((acc, item) => acc + item.price * item.quantity, 0);
+      mensagem += `\nTotal: R$ ${total.toFixed(2).replace('.',',')}\n\n`;
+      mensagem += `Por favor, confirmar o pedido. Obrigado!`;
+
+      const telefone = '5511977689354'; // Seu número com DDI e DDD (Brasil +55)
+      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(url, '_blank');
+    });
+
+    // Atualiza o carrinho no carregamento
+    atualizarCarrinho();
+  </script>
 </body>
 </html>
