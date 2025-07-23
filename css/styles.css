@@ -1,0 +1,548 @@
+/* Variáveis de cores */
+:root {
+    --cor-principal: #d84315;
+    --cor-secundaria: #f9f9f9;
+    --cor-secundaria-claro: #fcefe3;
+    --cor-texto: #333;
+    --cor-fundo: #fff;
+    --cor-borda: #ddd;
+    --cor-borda-foco: #d84315;
+    --cor-botao-bg: #d84315;
+    --cor-botao-hover: #b53612;
+    --cor-botao-desabilitado: #ccc;
+    --cor-erro: #e53935;
+  }
+  
+  [data-theme="dark"] {
+    --cor-principal: #ff7043;
+    --cor-secundaria: #2c2c2c;
+    --cor-secundaria-claro: #424242;
+    --cor-texto: #eee;
+    --cor-fundo: #121212;
+    --cor-borda: #555;
+    --cor-borda-foco: #ff7043;
+    --cor-botao-bg: #ff7043;
+    --cor-botao-hover: #e64a19;
+    --cor-botao-desabilitado: #555;
+    --cor-erro: #ef5350;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    margin: 0;
+    padding: 0 1rem 2rem 1rem;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Pacifico', cursive;
+    margin: 0.5rem 0 1rem 0;
+    color: var(--cor-principal);
+  }
+  
+  header {
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+  }
+  
+  header p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0;
+  }
+  
+  button#btnToggleTheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-principal);
+    padding: 0.25rem;
+    transition: color 0.3s ease;
+  }
+  
+  button#btnToggleTheme:hover,
+  button#btnToggleTheme:focus {
+    color: var(--cor-botao-hover);
+    outline: none;
+  }
+  
+  .filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0 2rem 0;
+    flex-wrap: wrap;
+  }
+  
+  .filtros input[type="search"],
+  .filtros select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1rem;
+    max-width: 250px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .filtros input[type="search"]:focus,
+  .filtros select:focus {
+    border-color: var(--cor-borda-foco);
+    outline: none;
+    box-shadow: 0 0 5px var(--cor-borda-foco);
+  }
+  
+  .botoes-categorias {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  
+  .botoes-categorias button {
+    background: var(--cor-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    font-weight: 600;
+    color: var(--cor-texto);
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .botoes-categorias button.ativo,
+  .botoes-categorias button:hover,
+  .botoes-categorias button:focus {
+    background-color: var(--cor-principal);
+    color: #fff;
+    border-color: var(--cor-principal);
+    outline: none;
+  }
+  
+  main {
+    display: flex;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  #cardapio {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    flex: 1 1 600px;
+  }
+  
+  .card {
+    background-color: var(--cor-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .card:hover,
+  .card:focus-within {
+    box-shadow: 0 4px 12px rgba(216, 67, 21, 0.5);
+    outline: none;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    user-select: none;
+  }
+  
+  .card h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+    color: var(--cor-principal);
+  }
+  
+  .card .desc {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    flex-grow: 1;
+    color: var(--cor-texto);
+  }
+  
+  .card .preco {
+    font-weight: 700;
+    color: var(--cor-principal);
+    margin-bottom: 0.5rem;
+  }
+  
+  .card label {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    display: block;
+  }
+  
+  .card input[type="number"] {
+    width: 60px;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .card input[type="number"]:focus {
+    border-color: var(--cor-borda-foco);
+    outline: none;
+    box-shadow: 0 0 5px var(--cor-borda-foco);
+  }
+  
+  .card button.btn-add {
+    background-color: var(--cor-botao-bg);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card button.btn-add:hover,
+  .card button.btn-add:focus {
+    background-color: var(--cor-botao-hover);
+    outline: none;
+  }
+  
+  .card button.btn-favorito {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: auto;
+    align-self: flex-end;
+    padding: 0.2rem;
+    transition: transform 0.2s ease;
+  }
+  
+  .card button.btn-favorito:hover,
+  .card button.btn-favorito:focus {
+    transform: scale(1.2);
+    outline: none;
+  }
+  
+  .pedido {
+    background-color: var(--cor-secundaria);
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 1rem;
+    width: 320px;
+    max-height: 600px;
+    overflow-y: auto;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .pedido h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--cor-principal);
+    margin-bottom: 1rem;
+  }
+  
+  #carrinho {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 0 1rem 0;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .item-carrinho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--cor-borda);
+    padding: 0.5rem 0;
+  }
+  
+  .item-carrinho div {
+    flex: 1 1 140px;
+    font-weight: 600;
+  }
+  
+  .item-carrinho input[type="number"] {
+    width: 50px;
+    padding: 0.25rem 0.4rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    transition: border-color 0.3s ease;
+  }
+  
+  .item-carrinho input[type="number"]:focus {
+    border-color: var(--cor-borda-foco);
+    outline: none;
+    box-shadow: 0 0 5px var(--cor-borda-foco);
+  }
+  
+  .item-carrinho button.remove {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: var(--cor-erro);
+    transition: color 0.3s ease;
+  }
+  
+  .item-carrinho button.remove:hover,
+  .item-carrinho button.remove:focus {
+    color: var(--cor-principal);
+    outline: none;
+  }
+  
+  .pedido p {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0.5rem 0 1rem 0;
+    color: var(--cor-principal);
+  }
+  
+  form#formCliente {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  
+  form#formCliente label {
+    font-weight: 600;
+  }
+  
+  form#formCliente input[type="text"],
+  form#formCliente textarea {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  
+  form#formCliente input[type="text"]:focus,
+  form#formCliente textarea:focus {
+    border-color: var(--cor-borda-foco);
+    outline: none;
+    box-shadow: 0 0 5px var(--cor-borda-foco);
+  }
+  
+  form#formCliente textarea {
+    min-height: 60px;
+  }
+  
+  #enviarPedido {
+    background-color: var(--cor-botao-bg);
+    border: none;
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 1rem;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #enviarPedido:hover:not(:disabled),
+  #enviarPedido:focus:not(:disabled) {
+    background-color: var(--cor-botao-hover);
+    outline: none;
+  }
+  
+  #enviarPedido:disabled {
+    background-color: var(--cor-botao-desabilitado);
+    cursor: not-allowed;
+    color: #666;
+  }
+  
+  #btnTopo {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--cor-botao-bg);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+  }
+  
+  #btnTopo:hover,
+  #btnTopo:focus {
+    background-color: var(--cor-botao-hover);
+    outline: none;
+  }
+  
+  @media (max-width: 600px) {
+    body {
+      padding: 0 0.5rem 1rem 0.5rem;
+    }
+  
+    main {
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    #cardapio {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+  
+    .pedido {
+      width: 100%;
+      max-height: none;
+      margin-top: 2rem;
+    }
+  
+    .filtros {
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .botoes-categorias {
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+  }
+  
+  /* Animação para adicionar ao carrinho */
+  .card.adicionado {
+    animation: pulseAdd 0.5s ease forwards;
+  }
+  
+  @keyframes pulseAdd {
+    0% { box-shadow: 0 0 0 rgba(216, 67, 21, 0.7); }
+    50% { box-shadow: 0 0 15px rgba(216, 67, 21, 0.7); }
+    100% { box-shadow: 0 0 0 transparent; }
+  }
+  
+  /* Validação do formulário */
+  input:invalid, textarea:invalid {
+    border-color: var(--cor-erro);
+    box-shadow: 0 0 4px var(--cor-erro);
+  }
+  
+  input:valid, textarea:valid {
+    border-color: var(--cor-borda);
+    box-shadow: none;
+  }
+  
+  /* Feedback de foco */
+  input:focus, textarea:focus, button:focus {
+    outline: 2px solid var(--cor-borda-foco);
+    outline-offset: 2px;
+  }
+  
+  /* Modal confirmação */
+  
+  dialog#modalConfirm {
+    border: none;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 90vw;
+    max-width: 450px;
+    background-color: var(--cor-secundaria);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    color: var(--cor-texto);
+  }
+  
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+  
+  .modal-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  #btnCancelar {
+    background-color: var(--cor-borda);
+    color: var(--cor-texto);
+  }
+  
+  #btnCancelar:hover,
+  #btnCancelar:focus {
+    background-color: var(--cor-botao-hover);
+    color: #fff;
+    outline: none;
+  }
+  
+  #btnConfirmar {
+    background-color: var(--cor-principal);
+    color: #fff;
+  }
+  
+  #btnConfirmar:hover,
+  #btnConfirmar:focus {
+    background-color: var(--cor-botao-hover);
+    outline: none;
+  }
+  
+  pre#resumoModal {
+    white-space: pre-wrap;
+    max-height: 300px;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.75rem;
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--cor-texto);
+    border: 1px solid var(--cor-borda);
+  }
+  
+  /* Ajuste para os ícones SVG não atrapalharem foco */
+  button#btnToggleTheme svg,
+  button#btnTopo svg {
+    pointer-events: none;
+    user-select: none;
+  }
+  

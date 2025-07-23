@@ -2,408 +2,116 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Cardápio completo da Burguer Point. Hambúrgueres artesanais, combos com batata e mousse, porções, yakissoba e bebidas. Peça já!" />
-  <title>Burguer Point | Cardápio</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <title>Burguer Point - Cardápio Online para Pedido via WhatsApp</title>
+  <meta name="description" content="Peça lanches, combos, porções e bebidas no Burguer Point e envie seu pedido direto pelo WhatsApp. Rápido, fácil e delicioso!" />
+  <meta name="author" content="Burguer Point" />
+  <meta name="keywords" content="burguer, lanche, combos, porções, bebidas, pedido online, whatsapp, delivery, Burguer Point" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Burguer Point - Pedido Online" />
+  <meta property="og:description" content="Faça seu pedido de lanches, combos e bebidas e envie direto pelo WhatsApp!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seudominio.com" />
+  <meta property="og:image" content="https://seudominio.com/imagens/logo-burguer-point.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Burguer Point - Pedido Online" />
+  <meta name="twitter:description" content="Peça seu lanche, combo ou bebida e envie pelo WhatsApp de forma rápida e prática." />
+  <meta name="twitter:image" content="https://seudominio.com/imagens/logo-burguer-point.png" />
+
+  <!-- Ícones -->
+  <link rel="icon" href="imagens/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="imagens/apple-touch-icon.png" />
+
+  <!-- Fontes Google -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- JS -->
+  <script src="js/script.js" defer></script>
 </head>
 <body>
   <header>
-    <img src="burgueria.png" alt="Logo da Burguer Point" loading="lazy" />
-    <div class="promocao" role="region" aria-label="Promoção">
-      Peça pelo WhatsApp e receba descontos exclusivos!
-    </div>
-    <p style="margin-top: 6px; font-size: 0.9rem; user-select:none;">
-      Aberto das 18h às 00h
-    </p>
+    <h1 tabindex="0">Burguer Point</h1>
+    <p tabindex="0">Faça seu pedido rápido e envie direto pelo WhatsApp!</p>
+    <button id="btnToggleTheme" role="switch" aria-checked="false" aria-label="Alternar modo claro e escuro" title="Alternar modo claro e escuro">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
   </header>
 
-  <nav class="menu" aria-label="Menu principal">
-    <button id="btn-menu-toggle" aria-expanded="false" aria-controls="menu-list" aria-label="Abrir menu de navegação">☰</button>
-    <ul id="menu-list" role="menubar" tabindex="-1">
-      <li role="none"><a href="#lanches" role="menuitem" tabindex="-1">Lanches</a></li>
-      <li role="none"><a href="#combos" role="menuitem" tabindex="-1">Combos</a></li>
-      <li role="none"><a href="#porcoes" role="menuitem" tabindex="-1">Porções</a></li>
-      <li role="none"><a href="#bebidas" role="menuitem" tabindex="-1">Bebidas</a></li>
-    </ul>
-  </nav>
+  <section class="filtros" aria-label="Filtros do cardápio">
+    <input id="busca" type="search" placeholder="Buscar produto..." aria-label="Buscar produto" />
+    <select id="filtroPreco" aria-label="Filtrar por faixa de preço">
+      <option value="todos">Todas as faixas</option>
+      <option value="ate10">Até R$10</option>
+      <option value="ate20">Até R$20</option>
+      <option value="ate30">Até R$30</option>
+      <option value="mais30">Mais de R$30</option>
+    </select>
+    <nav class="botoes-categorias" aria-label="Categorias do cardápio">
+      <button type="button" class="ativo" data-categoria="todos" aria-pressed="true">Todos</button>
+      <button type="button" data-categoria="lanches" aria-pressed="false">Lanches</button>
+      <button type="button" data-categoria="porcoes" aria-pressed="false">Porções</button>
+      <button type="button" data-categoria="combos" aria-pressed="false">Combos</button>
+      <button type="button" data-categoria="bebidas" aria-pressed="false">Bebidas</button>
+    </nav>
+  </section>
 
   <main>
-    <section class="cardapio" aria-label="Cardápio">
-      <div id="filtros" role="region" aria-label="Filtros de categoria">
-        <button class="active" data-filter="todos" aria-pressed="true">Todos</button>
-        <button data-filter="lanches" aria-pressed="false">Lanches</button>
-        <button data-filter="combos" aria-pressed="false">Combos</button>
-        <button data-filter="porcoes" aria-pressed="false">Porções</button>
-        <button data-filter="bebidas" aria-pressed="false">Bebidas</button>
-      </div>
-
-      <!--Lanches-->
-  
-      <section id="lanches" tabindex="0" aria-label="Lanches">
-        <h2>Lanches</h2>
-        <article class="item lanches" tabindex="0" aria-label="X-Burguer, R$ 16,00">
-          <img src="xburguer.jpg" alt="Imagem do X-Burguer" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Burguer <span class="price">R$ 16,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal e queijo mussarela.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Burguer ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Salada, R$ 17,00">
-          <img src="xsalada.jpg" alt="Imagem do X-Salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Salada <span class="price">R$ 17,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Egg, R$ 18,00">
-          <img src="xegg.jpg" alt="Imagem do X-Egg" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Egg <span class="price">R$ 18,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, ovo e queijo mussarela.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Egg ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Egg Salada, R$ 19,00">
-          <img src="xeggsalada.jpg" alt="Imagem do X-Egg Salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Egg Salada <span class="price">R$ 19,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, ovo, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Egg Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Bacon, R$ 20,00">
-          <img src="xbacon.jpg" alt="Imagem do X-Bacon" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Bacon <span class="price">R$ 20,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, queijo mussarela e bacon fatiado.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Bacon ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Bacon Salada, R$ 21,00">
-          <img src="xbacon salada.jpg" alt="Imagem do X-Bacon Salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Bacon Salada <span class="price">R$ 21,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, bacon fatiado, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Bacon Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Bacon egg Salada, R$ 24,00">
-          <img src="xbacon egg salada.jpg" alt="Imagem do X-Bacon egg Salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Bacon egg Salada <span class="price">R$ 24,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, hambúrguer artesanal, ovo, bacon fatiado, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Bacon egg Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Frango, R$ 16,00">
-          <img src="xfrango.jpg" alt="Imagem do X-Frango" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Frango <span class="price">R$ 16,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, Frango fatiado, queijo mussarela.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Frango ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Frango Salada, R$ 17,00">
-          <img src="xfrango salada.jpg" alt="Imagem do X-Frango Salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Frango Salada <span class="price">R$ 17,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, Frango fatiado, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Frango Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Frango Bacon, R$ 20,00">
-          <img src="xfrango bacon.jpg" alt="Imagem do X-Frango Bacon" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Frango Bacon <span class="price">R$ 20,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, Frango fatiado, bacon fatiado e queijo mussarela.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Frango Bacon ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item lanches" tabindex="0" aria-label="X-Frango bacon salada, R$ 21,00">
-          <img src="xfrango bacon salada.jpg" alt="Imagem do X-Frango bacon salada" />
-          <div class="item-info">
-            <div class="item-name">
-              X-Frango Bacon salada<span class="price">R$ 21,00</span>
-            </div>
-            <p class="description">Pão, maionese caseira, frango fatiado, bacon fatiado, queijo mussarela, alface e tomate.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar X-Frango Bacon Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      </section>
-
-      <!--Combos-->
-
-      <section id="combos" tabindex="0" aria-label="Combos">
-        <h2>Combos</h2>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Burguer, R$ 21,00">
-          <img src="combo-xburguer.jpg" alt="Combo X-Burguer com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Burguer <span class="price">R$ 21,00</span>
-            </div>
-            <p class="description">X-Burguer, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Burguer ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Salada, R$ 22,00">
-          <img src="combo-xsalada.jpg" alt="Combo X-Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Salada <span class="price">R$ 22,00</span>
-            </div>
-            <p class="description">X-Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Egg, R$ 23,00">
-          <img src="combo-xegg.jpg" alt="Combo X-Egg com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Egg <span class="price">R$ 23,00</span>
-            </div>
-            <p class="description">X-Egg, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Egg Salada, R$ 24,00">
-          <img src="combo-xeggsalada.jpg" alt="Combo X-Egg Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Egg Salada <span class="price">R$ 24,00</span>
-            </div>
-            <p class="description">X-Egg Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Egg Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon, R$ 25,00">
-          <img src="combo-xbacon.jpg" alt="Combo X-Bacon com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Bacon <span class="price">R$ 25,00</span>
-            </div>
-            <p class="description">X-Bacon, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon Salada, R$ 26,00">
-          <img src="combo-xbaconsalada.jpg" alt="Combo X-Bacon Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Bacon Salada <span class="price">R$ 26,00</span>
-            </div>
-            <p class="description">X-Bacon Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Bacon Egg Salada, R$ 29,00">
-          <img src="combo-xbaconeggsalada.jpg" alt="Combo X-Bacon Egg Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Bacon Egg Salada <span class="price">R$ 29,00</span>
-            </div>
-            <p class="description">X-Bacon Egg Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Bacon Egg Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Frango, R$ 21,00">
-          <img src="combo-xfrango.jpg" alt="Combo X-Frango com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Frango <span class="price">R$ 21,00</span>
-            </div>
-            <p class="description">X-Frango, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Salada, R$ 22,00">
-          <img src="combo-xfrangosalada.jpg" alt="Combo X-Frango Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Frango Salada <span class="price">R$ 22,00</span>
-            </div>
-            <p class="description">X-Frango Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Bacon, R$ 25,00">
-          <img src="combo-xfrangobacon.jpg" alt="Combo X-Frango Bacon com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Frango Bacon <span class="price">R$ 25,00</span>
-            </div>
-            <p class="description">X-Frango Bacon, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Bacon ao carrinho" type="button">Adicionar</button>
-        </article>
-      
-        <article class="item combos" tabindex="0" aria-label="Combo X-Frango Bacon Salada, R$ 26,00">
-          <img src="combo-xfrangobaconsalada.jpg" alt="Combo X-Frango Bacon Salada com Batata e Mousse" />
-          <div class="item-info">
-            <div class="item-name">
-              Combo X-Frango Bacon Salada <span class="price">R$ 26,00</span>
-            </div>
-            <p class="description">X-Frango Bacon Salada, batata frita e mousse de maracujá.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Combo X-Frango Bacon Salada ao carrinho" type="button">Adicionar</button>
-        </article>
-      </section>
-      
-
-      <section id="porcoes" tabindex="0" aria-label="Porções">
-        <h2>Porções</h2>
-        <article class="item porcoes" tabindex="0" aria-label="Porção Batata Frita Pequena, R$ 15,00">
-          <img src="batatafrita.jpg" alt="Imagem da porção de Batata Frita" />
-          <div class="item-info">
-            <div class="item-name">
-              Porção Batata Frita Pequena<span class="price">R$ 15,00</span>
-            </div>
-            <p class="description">Porção de batata frita crocante com Maionese caseira.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Porção Batata Frita Pequena ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item porcoes" tabindex="0" aria-label="Porção Batata Frita Média, R$ 17,00">
-          <img src="batatafrita.jpg" alt="Imagem da porção de Batata Frita" />
-          <div class="item-info">
-            <div class="item-name">
-              Porção Batata Frita Média<span class="price">R$ 17,00</span>
-            </div>
-            <p class="description">Porção de batata frita crocante com Maionese caseira.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Porção Batata Frita Média ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item porcoes" tabindex="0" aria-label="Porção Batata Frita Grande, R$ 19,00">
-          <img src="batatafrita.jpg" alt="Imagem da porção de Batata Frita" />
-          <div class="item-info">
-            <div class="item-name">
-              Porção Batata Frita Grande<span class="price">R$ 19,00</span>
-            </div>
-            <p class="description">Porção de batata frita crocante com Maionese caseira.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Porção Batata Frita Grande ao carrinho" type="button">Adicionar</button>
-        </article>
-      </section>
-
-      <section id="bebidas" tabindex="0" aria-label="Bebidas">
-        <h2>Bebidas</h2>
-        <article class="item bebidas" tabindex="0" aria-label="Refrigerante Lata, R$ 6,00">
-          <img src="refri.jpg" alt="Imagem do Refrigerante Lata" />
-          <div class="item-info">
-            <div class="item-name">
-              Refrigerante Lata <span class="price">R$ 6,00</span>
-            </div>
-            <p class="description">Refrigerante Lata 350ml (Coca, guaraná, fanta, sprite).</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Refrigerante Lata ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item bebidas" tabindex="0" aria-label="Refrigerante 600ml, R$ 9,00">
-          <img src="refri.jpg" alt="Imagem do Refrigerante Lata" />
-          <div class="item-info">
-            <div class="item-name">
-              Refrigerante 600ml <span class="price">R$ 9,00</span>
-            </div>
-            <p class="description">Refrigerante 600ml (Coca, guaraná,).</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Refrigerante 600ml Lata ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item bebidas" tabindex="0" aria-label="Refrigerante 2L, R$ 15,00">
-          <img src="refri.jpg" alt="Imagem do Refrigerante Lata" />
-          <div class="item-info">
-            <div class="item-name">
-              Refrigerante 2L <span class="price">R$ 15,00</span>
-            </div>
-            <p class="description">Refrigerante 2 Litros (Coca, guaraná).</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Refrigerante 2L Lata ao carrinho" type="button">Adicionar</button>
-        </article>
-
-        <article class="item bebidas" tabindex="0" aria-label="Dolly guaraná, R$ 10,00">
-          <img src="refri.jpg" alt="Imagem do Dolly guaraná" />
-          <div class="item-info">
-            <div class="item-name">
-              Dolly guaraná <span class="price">R$ 10,00</span>
-            </div>
-            <p class="description">Dolly guaraná 2 litros.</p>
-          </div>
-          <button class="btn-adicionar" aria-label="Adicionar Dolly guaraná ao carrinho" type="button">Adicionar</button>
-        </article>
-
-      </section>
+    <section id="cardapio" aria-live="polite" aria-label="Lista de produtos do cardápio">
+      <!-- Produtos gerados via JS -->
     </section>
 
-    <aside id="carrinho" aria-label="Carrinho de compras" tabindex="0" aria-live="polite">
-      <button id="btn-fechar-carrinho" aria-label="Fechar carrinho">✕</button>
-      <h2>Seu Pedido</h2>
-      <div class="carrinho-itens" tabindex="0" aria-live="polite" aria-relevant="additions removals"></div>
-      <div class="total" aria-live="polite">Total: R$ 0,00</div>
-      <button class="btn-finalizar" aria-label="Finalizar pedido pelo WhatsApp" type="button" disabled>Finalizar Pedido</button>
+    <section id="favoritos" aria-label="Produtos Favoritos" hidden></section>
+
+    <aside class="pedido" aria-label="Pedido do cliente">
+      <h2 tabindex="0">Seu Pedido</h2>
+      <ul id="carrinho" aria-live="polite" role="list">
+        <!-- Itens do carrinho -->
+      </ul>
+      <p>Total (com taxa de entrega R$ 5,00): R$ <span id="total">0.00</span></p>
+
+      <form id="formCliente" novalidate>
+        <label for="nomeCliente">Nome:</label>
+        <input id="nomeCliente" type="text" required aria-required="true" placeholder="Seu nome completo" />
+
+        <label for="enderecoCliente">Endereço Completo:</label>
+        <input id="enderecoCliente" type="text" required aria-required="true" placeholder="Rua, número, bairro, cidade" />
+
+        <label for="obsCliente">Observações (opcional):</label>
+        <textarea id="obsCliente" placeholder="Alguma observação para seu pedido?"></textarea>
+
+        <button type="button" id="enviarPedido" aria-label="Enviar pedido pelo WhatsApp" disabled>Enviar Pedido pelo WhatsApp</button>
+      </form>
     </aside>
   </main>
 
-  <button id="btn-carrinho-fixo" aria-label="Abrir carrinho de compras" title="Abrir carrinho">🛒</button>
-  <button id="voltar-topo" title="Voltar ao topo" aria-label="Voltar ao topo">↑</button>
+  <button id="btnTopo" aria-label="Voltar ao topo" title="Voltar ao topo" hidden>
+    <svg aria-hidden="true" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
 
-  <footer id="contato" role="contentinfo">
-    <div class="contato-info">
-      <p>Endereço: Rua Carlos de Laet, 166 - Vila Suíssa - César de Souza - SP</p>
-      <p>Horário de funcionamento: 18h às 00h</p>
-      <p>WhatsApp: <a href="https://wa.me/5511977689354" target="_blank" rel="noopener noreferrer">+55 11 97768-9354</a></p>
-      <p>Instagram: <a href="https://instagram.com/burguerpoint25" target="_blank" rel="noopener noreferrer">@burguerpoint25</a></p>
+  <!-- Modal confirmação -->
+  <dialog id="modalConfirm" aria-modal="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="resumoModal">
+    <div class="modal-content">
+      <h3 id="modalTitle">Confirme seu pedido</h3>
+      <pre id="resumoModal" tabindex="0"></pre>
+      <div class="modal-actions">
+        <button id="btnCancelar" aria-label="Cancelar envio do pedido">Cancelar</button>
+        <button id="btnConfirmar" aria-label="Confirmar e enviar pedido">Confirmar</button>
+      </div>
     </div>
-    <div class="redes-sociais" role="region" aria-label="Redes sociais">
-      <a href="https://instagram.com/burguerpoint25" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://wa.me/5511977689354" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-    <p>© 2025 Burguer Point - Todos os direitos reservados.</p>
+  </dialog>
+
+  <footer>
+    <p tabindex="0">&copy; 2025 Burguer Point - Todos os direitos reservados.</p>
   </footer>
-  <script src="scripts.js"></script>
 </body>
 </html>
