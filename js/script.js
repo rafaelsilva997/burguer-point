@@ -53,7 +53,7 @@ const produtos = [
       nome: "X-Egg Bacon",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal suculento, mussarela, ovo, bacon fatiado e maionese caseira.",
-      preco: 22.00,
+      preco: 23.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
@@ -61,7 +61,15 @@ const produtos = [
       nome: "X-Egg Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal suculento, mussarela, ovo, bacon fatiado, alface, tomate e maionese caseira.",
-      preco: 23.00,
+      preco: 24.00,
+      imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 8,
+      nome: "X-Tudo",
+      categoria: "lanches",
+      descricao: "Pão macio, hambúrguer artesanal suculento, presunto, mussarela, cheddar, ovo, bacon fatiado, alface, tomate e maionese caseira.",
+      preco: 28.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
@@ -117,7 +125,7 @@ const produtos = [
       nome: "X-Frango Egg Bacon",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo, bacon fatiado, e maionese caseira.",
-      preco: 22.00,
+      preco: 23.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
@@ -125,7 +133,15 @@ const produtos = [
       nome: "X-Frango Egg Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo, bacon fatiado, alface, tomate e maionese caseira.",
-      preco: 23.00,
+      preco: 24.00,
+      imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 16,
+      nome: "X-Frango Tudo",
+      categoria: "lanches",
+      descricao: "Pão macio, filé de frango fatiado,presunto, mussarela, ovo, cheddar, bacon fatiado, alface, tomate e maionese caseira.",
+      preco: 28.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
@@ -181,7 +197,7 @@ const produtos = [
       nome: "X-Linguiça Egg Bacon",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, bacon fatiado e maionese caseira.",
-      preco: 22.00,
+      preco: 23.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
@@ -189,7 +205,15 @@ const produtos = [
       nome: "X-Linguiça Egg Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, bacon fatiado, alface, tomate e maionese caseira.",
-      preco: 23.00,
+      preco: 24.00,
+      imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+      id: 24,
+      nome: "X-Linguiça Tudo",
+      categoria: "lanches",
+      descricao: "Pão macio, hambúrguer artesanal de linguiça, presunto, mussarela, ovo, cheddar, bacon fatiado, alface, tomate e maionese caseira.",
+      preco: 28.00,
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
