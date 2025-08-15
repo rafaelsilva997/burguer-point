@@ -65,7 +65,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 8,
+      id: 9,
       nome: "X-Tudo",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal suculento, presunto, mussarela, cheddar, ovo, bacon fatiado, alface, tomate e maionese caseira.",
@@ -73,7 +73,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 9,
+      id: 10,
       nome: "X-Frango",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela e maionese caseira.",
@@ -81,7 +81,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 10,
+      id: 11,
       nome: "X-Frango Salada",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, alface, tomate e maionese caseira.",
@@ -89,7 +89,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 11,
+      id: 12,
       nome: "X-Frango Egg",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo e maionese caseira.",
@@ -97,7 +97,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 12,
+      id: 13,
       nome: "X-Frango Egg Salada",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo, alface, tomate e maionese caseira.",
@@ -105,7 +105,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 13,
+      id: 14,
       nome: "X-Frango Bacon",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, bacon fatiado e maionese caseira.",
@@ -113,7 +113,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 14,
+      id: 15,
       nome: "X-Frango Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, bacon fatiado, alface, tomate e maionese caseira.",
@@ -121,7 +121,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 15,
+      id: 16,
       nome: "X-Frango Egg Bacon",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo, bacon fatiado, e maionese caseira.",
@@ -129,7 +129,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 16,
+      id: 17,
       nome: "X-Frango Egg Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado, mussarela, ovo, bacon fatiado, alface, tomate e maionese caseira.",
@@ -137,7 +137,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 16,
+      id: 18,
       nome: "X-Frango Tudo",
       categoria: "lanches",
       descricao: "Pão macio, filé de frango fatiado,presunto, mussarela, ovo, cheddar, bacon fatiado, alface, tomate e maionese caseira.",
@@ -145,7 +145,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 17,
+      id: 19,
       nome: "X-Linguiça",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, maionese caseira.",
@@ -153,7 +153,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 18,
+      id: 20,
       nome: "X-Linguiça Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, alface, tomate e maionese caseira.",
@@ -161,7 +161,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 19,
+      id: 21,
       nome: "X-Linguiça Egg",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, maionese caseira.",
@@ -169,7 +169,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 20,
+      id: 22,
       nome: "X-Linguiça Egg Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, alface, tomate e maionese caseira.",
@@ -177,7 +177,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 21,
+      id: 23,
       nome: "X-Linguiça Bacon",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, bacon fatiado e maionese caseira.",
@@ -185,7 +185,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 22,
+      id: 24,
       nome: "X-Linguiça Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, bacon fatiado, alface, tomate e maionese caseira.",
@@ -193,7 +193,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 23,
+      id: 25,
       nome: "X-Linguiça Egg Bacon",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, bacon fatiado e maionese caseira.",
@@ -201,7 +201,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 24,
+      id: 26,
       nome: "X-Linguiça Egg Bacon Salada",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, mussarela, ovo, bacon fatiado, alface, tomate e maionese caseira.",
@@ -209,7 +209,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 24,
+      id: 27,
       nome: "X-Linguiça Tudo",
       categoria: "lanches",
       descricao: "Pão macio, hambúrguer artesanal de linguiça, presunto, mussarela, ovo, cheddar, bacon fatiado, alface, tomate e maionese caseira.",
@@ -217,7 +217,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 25,
+      id: 28,
       nome: "Porção de Batata Pequena 300g",
       categoria: "porcoes",
       descricao: "Porção generosa de batatas fritas crocantes com maionese caseira.",
@@ -225,7 +225,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 26,
+      id: 29,
       nome: "Porção de Batata Média 400g",
       categoria: "porcoes",
       descricao: "Porção generosa de batatas fritas crocantes com maionese caseira.",
@@ -233,7 +233,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 27,
+      id: 30,
       nome: "Porção de Batata Grande 500g",
       categoria: "porcoes",
       descricao: "Porção generosa de batatas fritas crocantes com maionese caseira.",
@@ -241,7 +241,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 28,
+      id: 31,
       nome: "Batatas Fritas 150g e Mousse",
       categoria: "combos",
       descricao: "Complemente seu lanche com batata frita crocante 150g + Maionese Caseira e mousse delicioso!.",
@@ -249,7 +249,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1571091718767-fb6e5b6d20fa?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 29,
+      id: 32,
       nome: "Cola Coca (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Lata gelada, ideal pra acompanhar seu lanche.",
@@ -257,7 +257,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 30,
+      id: 33,
       nome: "Coca-Cola Zero (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Sabor original, zero açúcar. Bem gelada pra acompanhar seu lanche.",
@@ -265,7 +265,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 31,
+      id: 34,
       nome: "Guaraná Antarctica (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Sabor brasileiro e refrescante. Ideal com qualquer lanche!",
@@ -273,7 +273,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 32,
+      id: 35,
       nome: "Sprite (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Refrescância cítrica e gelada para acompanhar seu lanche.",
@@ -281,7 +281,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 33,
+      id: 36,
       nome: "Fanta Laranja (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Sabor cítrico e doce, bem gelada para seu lanche.",
@@ -289,7 +289,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 34,
+      id: 37,
       nome: "Fanta Uva (Lata 350ml)",
       categoria: "bebidas",
       descricao: "Sabor doce e refrescante, geladinha para acompanhar seu lanche.",
@@ -297,7 +297,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 35,
+      id: 38,
       nome: "Coca-Cola (Garrafa 2L)",
       categoria: "bebidas",
       descricao: "A clássica Coca-Cola em garrafa grande, para compartilhar e aproveitar.",
@@ -305,7 +305,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 36,
+      id: 39,
       nome: "Guaraná Antarctica (Garrafa 2L)",
       categoria: "bebidas",
       descricao: "Refrescância e sabor brasileiro em garrafa para toda a família.",
@@ -313,7 +313,7 @@ const produtos = [
       imagem: "https://images.unsplash.com/photo-1601924638867-3a73c2f4f20f?auto=format&fit=crop&w=400&q=80"
     },
     {
-      id: 37,
+      id: 40,
       nome: "Fanta Laranja (Garrafa 2L)",
       categoria: "bebidas",
       descricao: "Sabor cítrico e doce em garrafa grande para compartilhar.",
