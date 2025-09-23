@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burguer Point - Cardápio Completo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🍔 Burguer Point</h1>
+  <p>Monte seu pedido e peça rápido pelo WhatsApp!</p>
+</header>
+
+<main>
+  <!-- CARRINHO -->
+  <aside id="carrinho">
+    <h2>🛒 Carrinho (<span id="qtdItens">0</span> itens)</h2>
+    <ul id="listaCarrinho"></ul>
+    <p id="totalCarrinho">Total: R$ 0,00</p>
+
+    <!-- Informações do cliente -->
+    <div id="infoCliente">
+      <h3>📝 Informações do Pedido</h3>
+      <label for="nomeCliente">Nome:</label>
+      <input type="text" id="nomeCliente" placeholder="Digite seu nome">
+      
+      <label for="enderecoCliente">Endereço:</label>
+      <input type="text" id="enderecoCliente" placeholder="Digite seu endereço">
+      
+      <p class="avisoEntrega">⚠️ A taxa de entrega não está inclusa no total.</p>
+    </div>
+
+    <div class="botoes-carrinho">
+      <button onclick="limparCarrinho()">🗑️ Limpar Carrinho</button>
+      <button onclick="finalizarPedido()">✅ Finalizar Pedido</button>
+    </div>
+  </aside>
+
+  <!-- CARDÁPIO -->
+  <section id="cardapio">
+
+    <!-- PROMOÇÕES NO TOPO -->
+    <h2 class="categoria">🔥 Promoções do Dia</h2>
+
+    <div class="lanche promo">
+      <span class="label-promo">🔥 Promoção</span>
+      <img src="" alt="Promo Combo X-Burguer Salada">
+      <h3>Promo Combo X-Burguer Salada</h3>
+      <p>X-Burguer Salada + Batata 150g + Refrigerante 200ml</p>
+      <p class="preco">R$ 39,90 <span class="antigo">R$ 45,00</span></p>
+      <button onclick="adicionarCombo('Promo Combo X-Burguer', 39,90)">Adicionar Promoção</button>
+    </div>
+
+    <div class="lanche promo">
+      <span class="label-promo">🔥 Promoção</span>
+      <img src="" alt="Promo X-Bacon Salada">
+      <h3>Promo X-Bacon Salada + Bebida</h3>
+      <p>X-Bacon Salada + Refrigerante 350ml</p>
+      <p class="preco">R$ 27,90 <span class="antigo">R$ 31,00</span></p>
+      <button onclick="adicionarCombo('Promo X-Bacon + Bebida', 27.90)">Adicionar Promoção</button>
+    </div>
+
+    <!-- Lanches -->
+    <h2 class="categoria">🍔 Lanches</h2>
+
+    <div class="lanche">
+      <img src="imagens/x-burguer.jpg" alt="X-Burguer">
+      <h3>X-Burguer Artesanal</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, maionese.</p>
+      <p class="preco">R$ 19,00</p>
+      <button onclick="abrirAdicionaisModal('X-Burguer', 19)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-salada.jpg" alt="X-Burguer Salada">
+      <h3>X-Burguer Salada</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, alface, tomate e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Burguer Salada', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-burguer egg.jpg" alt="X-Burguer Egg">
+      <h3>X-Burguer Egg</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, ovo e maionese.</p>
+      <p class="preco">R$ 20,00</p>
+      <button onclick="abrirAdicionaisModal('X-Burguer Egg', 20)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-egg salada.png" alt="X-Egg Salada">
+      <h3>X-Egg Salada</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, ovo, alface, tomate e maionese.</p>
+      <p class="preco">R$ 23,00</p>
+      <button onclick="abrirAdicionaisModal('X-Egg Salada', 23)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-bacon.jpg" alt="X-Bacon">
+      <h3>X-Bacon</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, bacon e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Bacon', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-bacon salada.png" alt="X-Bacon Salada">
+      <h3>X-Bacon Salada</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 25,00</p>
+      <button onclick="abrirAdicionaisModal('X-Bacon Salada', 25)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-bacon egg salada.jpg" alt="X-Bacon Egg Salada">
+      <h3>X-Bacon Egg Salada</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela, ovo, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 26,00</p>
+      <button onclick="abrirAdicionaisModal('X-Bacon Egg Salada', 26)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-tudo.jpg" alt="X-Tudo">
+      <h3>X-Tudo</h3>
+      <p>Pão, hambúrguer artesanal 160g, queijo mussarela,batata palha, presunto, ovo, cheddar, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 33,00</p>
+      <button onclick="abrirAdicionaisModal('X-Tudo', 33)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-frango.jpg" alt="X-Frango">
+      <h3>X-Frango</h3>
+      <p>Pão, filé de frango, queijo mussarela, e maionese.</p>
+      <p class="preco">R$ 19,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango', 19)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Salada">
+      <h3>X-Frango Salada</h3>
+      <p>Pão, filé de frango, queijo mussarela, alface, tomate e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Salada', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Egg">
+      <h3>X-Frango Egg</h3>
+      <p>Pão, filé de frango, queijo mussarela, ovo e maionese.</p>
+      <p class="preco">R$ 20,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Egg', 20)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Egg Salada">
+      <h3>X-Frango Egg Salada</h3>
+      <p>Pão, filé de frango, queijo mussarela, ovo, alface, tomate e maionese.</p>
+      <p class="preco">R$ 23,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Egg Salada', 23)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Bacon">
+      <h3>X-Frango Bacon</h3>
+      <p>Pão, filé de frango, queijo mussarela, bacon e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Bacon', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Bacon Salada">
+      <h3>X-Frango Bacon Salada</h3>
+      <p>Pão, filé de frango, queijo mussarela, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 25,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Bacon Salada', 25)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Bacon Egg Salada">
+      <h3>X-Frango Bacon Egg Salada</h3>
+      <p>Pão, filé de frango, queijo mussarela, ovo, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 26,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Bacon Egg Salada', 26)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Frango Tudo">
+      <h3>X-Frango Tudo</h3>
+      <p>Pão, filé de frango, queijo mussarela, batata palha, presunto, ovo, cheddar, bacon, alface, tomate e maionese.
+      </p>
+      <p class="preco">R$ 33,00</p>
+      <button onclick="abrirAdicionaisModal('X-Frango Tudo', 33)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/" alt="X-Linguiça Artesanal">
+      <h3>X-Burguer Artesanal</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, maionese.
+      </p>
+      <p class="preco">R$ 19,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Artesanal', 19)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Linguiça com Salada">
+      <h3>X-Burguer com Salada</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, alface, tomate e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça com Salada', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Linguiça Egg">
+      <h3>X-Linguiça Egg</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, ovo e maionese.
+      </p>
+      <p class="preco">R$ 20,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Egg', 20)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Linguiça Egg Salada">
+      <h3>X-Linguiça Egg Salada</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, ovo, alface, tomate e maionese.</p>
+      <p class="preco">R$ 23,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Egg Salada', 23)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-linguiça bacon.jpg" alt="X-Linguiça Bacon">
+      <h3>X-Linguiça Bacon</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, bacon e maionese.</p>
+      <p class="preco">R$ 22,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Bacon', 22)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="imagens/x-linguiça bacon salada.jpg" alt="X-Linguiça Bacon Salada">
+      <h3>X-Linguiça Bacon Salada</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 25,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Bacon Salada', 25)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Linguiça Bacon Egg Salada">
+      <h3>X-Linguiça Bacon Egg Salada</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, ovo,  bacon, alface, tomate e maionese.
+      </p>
+      <p class="preco">R$ 26,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Bacon Egg Salada', 26)">Escolher Adicionais</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="X-Linguiça Tudo">
+      <h3>X-Linguiça Tudo</h3>
+      <p>Pão, linguiça toscana artesanal 160g, queijo mussarela, batata palha, presunto, ovo, cheddar, bacon, alface, tomate e maionese.</p>
+      <p class="preco">R$ 33,00</p>
+      <button onclick="abrirAdicionaisModal('X-Linguiça Tudo', 33)">Escolher Adicionais</button>
+    </div>
+
+
+    <!-- Combos -->
+    <h2 class="categoria">🍱 Combos</h2>
+    <div class="lanche">
+      <img src="" alt="Combo X-Burguer Salada">
+      <h3>Combo X-Burguer Salada</h3>
+      <p>X-Burguer + Batata 150g + Coca-Cola 200ml</p>
+      <p class="preco">R$ 27,99</p>
+      <button onclick="adicionarCombo('Combo X-Burguer Salada', 27.99)">Adicionar Combo</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="Combo X-Bacon Salada">
+      <h3>Combo X-Bacon Salada</h3>
+      <p>X-Bacon + Batata 150g + Coca-Cola 200ml</p>
+      <p class="preco">R$ 29,99</p>
+      <button onclick="adicionarCombo('Combo X-Bacon Salada', 29.99)">Adicionar Combo</button>
+    </div>
+
+    <!-- Porções -->
+    <h2 class="categoria">🍟 Porções</h2>
+    <div class="lanche">
+      <img src="" alt="Porção Batatas Fritas Pequena">
+      <h3>Porção Batatas Fritas Pequena</h3>
+      <p>batatas fritas crocantes 300g + pote de maionese</p>
+      <p class="preco">R$ 17,00</p>
+      <button onclick="adicionarCombo('Porção Batatas Fritas Pequena', 17.00)">Adicionar Combo</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="Porção Batatas Fritas Média">
+      <h3>Porção Batatas Fritas Média</h3>
+      <p>batatas fritas crocantes 400g + pote de maionese</p>
+      <p class="preco">R$ 19,00</p>
+      <button onclick="adicionarCombo('Porção Batatas Fritas Média', 19.00)">Adicionar Combo</button>
+    </div>
+
+    <!-- Bebidas -->
+    <h2 class="categoria">🥤 Bebidas</h2>
+    <div class="lanche">
+      <img src="" alt="Refrigerante 300ml">
+      <h3>Refrigerante Lata 350ml</h3>
+      <p>Coca-Cola, Coca-Cola zero, Guaraná ou Fanta</p>
+      <p class="preco">R$ 6,00</p>
+      <button onclick="adicionarBebida('Refrigerante 350ml', 6)">Adicionar</button>
+    </div>
+
+    <div class="lanche">
+      <img src="" alt="Água 500ml">
+      <h3>Coca-Cola Garrafa 2l</h3>
+      <p>Coca-Cola 2 Litros</p>
+      <p class="preco">R$ 15,00</p>
+      <button onclick="adicionarBebida('Coca-Cola 2l', 15)">Adicionar</button>
+    </div>
+
+  </section>
+</main>
+
+<!-- MODAL DE ADICIONAIS -->
+<div id="modalAdicionais" class="modal">
+  <div class="modal-content">
+    <h3 id="modalTitulo">Escolha seus adicionais</h3>
+    <form id="formAdicionais"></form>
+    <div class="botoes-modal">
+      <button type="button" onclick="adicionarAoCarrinhoModal()">Adicionar ao Carrinho</button>
+      <button type="button" onclick="fecharModal()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Burguer Point – Pedido rápido e fácil!</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

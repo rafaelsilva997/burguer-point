@@ -1,0 +1,370 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+    padding: 20px;
+    line-height: 1.5;
+  }
+  
+  /* HEADER */
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  header h1 {
+    font-size: 2.2rem;
+    color: #c62828;
+  }
+  
+  header p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 5px;
+  }
+  
+  /* TÍTULOS DE CATEGORIA */
+  .categoria {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0 15px 0;
+    font-size: 1.5rem;
+    color: #c62828;
+    font-weight: bold;
+  }
+  
+  /* CARDÁPIO */
+  #cardapio {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  /* CARD DE LANCHES, COMBOS E BEBIDAS */
+  .lanche {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 300px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .lanche:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  }
+  
+  .lanche img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    object-fit: cover;
+  }
+  
+  .lanche h3,
+  .lanche p,
+  .lanche .preco,
+  .lanche button {
+    text-align: center;
+  }
+  
+  .lanche button {
+    margin-top: 8px;
+    padding: 10px 18px;
+    background-color: #c62828;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .preco {
+    font-size: 1.6em;
+  }
+
+  .lanche button:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+  }
+  
+  /* PROMOÇÕES */
+  .lanche.promo {
+    border: 3px solid #ff9800;
+    background: #fff7e6;
+    box-shadow: 0 6px 20px rgba(255,152,0,0.3);
+    position: relative;
+  }
+  
+  .label-promo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #ff9800;
+    color: #fff;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  
+  .preco .antigo {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 8px;
+    font-weight: normal;
+  }
+  
+  /* CARRINHO */
+  #carrinho {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 380px;
+    margin: 0 auto 40px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  }
+  
+  #carrinho h2 {
+    font-size: 1.5rem;
+    color: #c62828;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  #listaCarrinho {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  
+  #listaCarrinho li {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #listaCarrinho li button {
+    background: #ff4d4d;
+    border: none;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  #listaCarrinho li button:hover {
+    background: #e60000;
+  }
+  
+  #totalCarrinho {
+    font-weight: bold;
+    color: #c62828;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .botoes-carrinho button {
+    padding: 10px 14px;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  
+  .botoes-carrinho button:first-child {
+    background: #ff4d4d;
+  }
+  
+  .botoes-carrinho button:first-child:hover {
+    background: #e60000;
+    transform: scale(1.05);
+  }
+  
+  .botoes-carrinho button:last-child {
+    background: #c62828;
+  }
+  
+  .botoes-carrinho button:last-child:hover {
+    background: #e53935;
+    transform: scale(1.05);
+  }
+  
+  /* CAMPOS DE NOME E ENDEREÇO */
+  #infoCliente {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #infoCliente label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #c62828;
+  }
+  
+  #infoCliente input {
+    width: 90%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .avisoEntrega {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ff9800;
+    font-weight: bold;
+  }
+  
+  /* MODAL DE ADICIONAIS */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  .modal-content h3 {
+    margin-bottom: 15px;
+    color: #c62828;
+  }
+  
+  #formAdicionais label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .botoes-modal {
+    margin-top: 15px;
+    text-align: right;
+  }
+  
+  .botoes-modal button {
+    padding: 8px 14px;
+    margin-left: 8px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  
+  .botoes-modal button:first-child {
+    background-color: #c62828;
+  }
+  
+  .botoes-modal button:first-child:hover {
+    background-color: #e53935;
+    transform: scale(1.05);
+  }
+  
+  .botoes-modal button:last-child {
+    background-color: #ff4d4d;
+  }
+  
+  .botoes-modal button:last-child:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+  }
+  
+  /* FOOTER */
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  /* RESPONSIVO */
+  @media (max-width: 1024px) {
+    #cardapio {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .lanche {
+      max-width: 90%;
+    }
+  
+    #carrinho {
+      max-width: 90%;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+  
+    header p {
+      font-size: 0.9rem;
+    }
+  
+    .categoria {
+      font-size: 1.2rem;
+      margin: 15px 0 8px 0;
+    }
+  
+    .lanche h3 {
+      font-size: 1.1rem;
+    }
+  
+    .lanche p {
+      font-size: 0.9rem;
+    }
+  
+    .lanche button {
+      padding: 8px 14px;
+      font-size: 0.9rem;
+    }
+  
+    .botoes-carrinho button {
+      padding: 8px 12px;
+      font-size: 0.9rem;
+    }
+  
+    .label-promo {
+      font-size: 0.8rem;
+      padding: 3px 6px;
+    }
+  }
+  
